@@ -24,11 +24,11 @@ class Conges
     private ?bool $estValide = null;
 
     #[ORM\ManyToOne(inversedBy: 'conges')]
-    private ?Utilisateur $refPilote = null;
+    private ?User $refPilote = null;
 
     #[ORM\ManyToOne(inversedBy: 'conges')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Utilisateur $refValidationAdmin = null;
+    private ?User $refValidationAdmin = null;
 
     public function getId(): ?int
     {
@@ -71,24 +71,24 @@ class Conges
         return $this;
     }
 
-    public function getRefPilote(): ?Utilisateur
+    public function getRefPilote(): ?User
     {
         return $this->refPilote;
     }
 
-    public function setRefPilote(?Utilisateur $refPilote): static
+    public function setRefPilote(?User $refPilote): static
     {
         $this->refPilote = $refPilote;
 
         return $this;
     }
 
-    public function getRefValidationAdmin(): ?Utilisateur
+    public function getRefValidationAdmin(): ?User
     {
         return $this->refValidationAdmin;
     }
 
-    public function setRefValidationAdmin(?Utilisateur $refValidationAdmin): static
+    public function setRefValidationAdmin(?User $refValidationAdmin): static
     {
         $this->refValidationAdmin = $refValidationAdmin;
 

@@ -33,7 +33,7 @@ class Vol
 
     #[ORM\ManyToOne(inversedBy: 'vols')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Utilisateur $refPilote = null;
+    private ?User $refPilote = null;
 
     #[ORM\ManyToOne(inversedBy: 'vols')]
     private ?Avion $refAvion = null;
@@ -114,12 +114,12 @@ class Vol
         return $this;
     }
 
-    public function getRefPilote(): ?Utilisateur
+    public function getRefPilote(): ?User
     {
         return $this->refPilote;
     }
 
-    public function setRefPilote(?Utilisateur $refPilote): static
+    public function setRefPilote(?User $refPilote): static
     {
         $this->refPilote = $refPilote;
 

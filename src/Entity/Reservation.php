@@ -14,7 +14,7 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-    private ?Utilisateur $refUtilisateur = null;
+    private ?User $refUtilisateur = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     private ?Vol $refVol = null;
@@ -27,12 +27,12 @@ class Reservation
         return $this->id;
     }
 
-    public function getRefUtilisateur(): ?Utilisateur
+    public function getRefUtilisateur(): ?User
     {
         return $this->refUtilisateur;
     }
 
-    public function setRefUtilisateur(?Utilisateur $refUtilisateur): static
+    public function setRefUtilisateur(?User $refUtilisateur): static
     {
         $this->refUtilisateur = $refUtilisateur;
 

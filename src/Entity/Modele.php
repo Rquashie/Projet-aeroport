@@ -28,9 +28,9 @@ class Modele
     private Collection $avions;
 
     /**
-     * @var Collection<int, Utilisateur>
+     * @var Collection<int, User>
      */
-    #[ORM\OneToMany(targetEntity: Utilisateur::class, mappedBy: 'refModele')]
+    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'refModele')]
     private Collection $utilisateurs;
 
     public function __construct()
@@ -99,14 +99,14 @@ class Modele
     }
 
     /**
-     * @return Collection<int, Utilisateur>
+     * @return Collection<int, User>
      */
     public function getUtilisateurs(): Collection
     {
         return $this->utilisateurs;
     }
 
-    public function addUtilisateur(Utilisateur $utilisateur): static
+    public function addUtilisateur(User $utilisateur): static
     {
         if (!$this->utilisateurs->contains($utilisateur)) {
             $this->utilisateurs->add($utilisateur);
@@ -116,7 +116,7 @@ class Modele
         return $this;
     }
 
-    public function removeUtilisateur(Utilisateur $utilisateur): static
+    public function removeUtilisateur(User $utilisateur): static
     {
         if ($this->utilisateurs->removeElement($utilisateur)) {
             // set the owning side to null (unless already changed)
