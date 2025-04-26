@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Bienvenue User, {{ app.user.userIdentifier }}</h1>
+    <form action=" {{ path('app_logout') }}" method="post">
+        <button type="submit" >Déconnexion</button>
+    </form>
+{% endblock %}

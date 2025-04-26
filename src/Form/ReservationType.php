@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Avion;
+use App\Entity\Reservation;
 use App\Entity\User;
 use App\Entity\Vol;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -10,35 +10,28 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class VolType extends AbstractType
+class ReservationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('villeDepart')
-            ->add('villeArrive')
-            ->add('dateDepart', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('heureDepart', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('prixBilletInitiale')
-            ->add('refPilote', EntityType::class, [
+            ->add('prixBillet')
+            ->add('refUtilisateur', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
             ])
-            ->add('refAvion', EntityType::class, [
-                'class' => Avion::class,
+            ->add('refVol', EntityType::class, [
+                'class' => Vol::class,
                 'choice_label' => 'id',
             ])
+
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Vol::class,
+            'data_class' => Reservation::class,
         ]);
     }
 }
