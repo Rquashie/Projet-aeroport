@@ -31,6 +31,7 @@ class Vol
     #[ORM\Column]
     private ?float $prixBilletInitiale = null;
 
+
     #[ORM\ManyToOne(inversedBy: 'vols')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $refPilote = null;
@@ -43,6 +44,9 @@ class Vol
      */
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'refVol')]
     private Collection $reservations;
+
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
 
     public function __construct()
     {
@@ -167,4 +171,6 @@ class Vol
 
         return $this;
     }
+
+   
 }

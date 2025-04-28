@@ -1,37 +1,69 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+{% include'head.html.twig' %}
+<body>
+{% include 'header.html.twig' %}
 
-{% block title %}Avion index{% endblock %}
+<div class="hero-wrap js-fullheight" style="background-image: url({{ asset('images/bg_5.jpg') }});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+            <div class="col-md-7 ftco-animate">
+                <span class="subheading">Welcome to Pacific</span>
+                <h1 class="mb-4">Discover Your Favorite Place with Us</h1>
+                <p class="caps">Travel to the any corner of the world, without going around in circles</p>
+            </div>
+            <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+                <span class="fa fa-play"></span>
+            </a>
+        </div>
+    </div>
+</div>
 
-{% block content %}
-    <h1>Avion index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for avion in avions %}
-            <tr>
-                <td>{{ avion.id }}</td>
-                <td>{{ avion.nom }}</td>
-                <td>
-                    <a href="{{ path('app_avion_show', {'id': avion.id}) }}">show</a>
-                    <a href="{{ path('app_avion_edit', {'id': avion.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_avion_new') }}">Create new</a>
-    <a href="{{ path('app_index') }}">Retour</a>
+<section>
+    <div>
+<table class="table" id="avion">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for avion in avions %}
+                    <tr>
+                        <td>{{ avion.id }}</td>
+                        <td>{{ avion.nom }}</td>
+                        <td>
+                            <a href="{{ path('app_avion_show', {'id': avion.id}) }}">Show</a>
+                            <a href="{{ path('app_avion_edit', {'id': avion.id}) }}">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">No records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
-{% endblock %}
+            <a href="{{ path('app_avion_new') }}">Create new</a>
+            <a href="{{ path('app_index') }}">Retour</a>
+        </div>
+
+</section>
+
+
+
+</body>
+
+</html>
+<style>
+body {
+padding-top:300px
+}
+
+</style>

@@ -3,9 +3,11 @@
 {% block title %}Vol index{% endblock %}
 
 {% block content %}
+
+<body>
     <h1>Vol index</h1>
 
-    <table class="table">
+    <table class="table" id="vol">
         <thead>
             <tr>
                 <th>Id</th>
@@ -41,5 +43,8 @@
 
     <a href="{{ path('app_vol_new') }}">Create new</a>
     <a href="{{ path('app_index') }}">Retour</a>
+</body>
 
 {% endblock %}
+
+

@@ -1,719 +1,579 @@
-{% extends 'base.html.twig' %}
-{% block content %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
-	<title>Airlines Aviation Services</title>
-	<link rel='stylesheet' id='bootstrap-css' href='../css/bootstrap.min.css' type='text/css' media='all' />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.css">
-	<link rel='stylesheet' id='font-awesome-css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css' type='text/css' media='all' />
-	<link rel='stylesheet' id='google-fonts-css' href='https://fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
-	<link rel='stylesheet' id='owl-carousel-css' href='../css/owl.carousel.min.css' type='text/css' media='all' />
-	<link rel='stylesheet' id='fancybox-css-css' href='../css/jquery.fancybox.min.css' type='text/css' media='all' />
-	<link rel='stylesheet' id='airlinesaviationservices-style-css' href='../css/style.css' type='text/css' media='all' />
-	<script type='text/javascript' src='../js/jquery.js'></script>
-	<script type='text/javascript' src='../js/jquery-migrate.min.js'></script>
+	{% include 'head.html.twig' %}
 </head>
+<body>
+{% include 'header.html.twig' %}
 
-<body class="home page-template page-template-tmpl-frontpage page-template-tmpl-frontpage-php page page-id-5">
-	<div id="page" class="site">
-		<header id="masthead" class="site-header">
-			<div class="header-top">
-				<div class="container">
-					<div class="content-top">
-						<div class="row">
-							<div class="header-custom-text col-lg-6 col-md-8 col-sm-9">
-								<p><a href="">www.startplanetsarilines.com</a> <span class="line">/</span> <a href="mailto:">info@startplanetsarilines.com</a></p>
+<div class="hero-wrap js-fullheight" style="background-image: url({{ asset('images/bg_5.jpg') }});">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+			<div class="col-md-7 ftco-animate">
+				<span class="subheading">Welcome to Pacific</span>
+				<h1 class="mb-4">Discover Your Favorite Place with Us</h1>
+				<p class="caps">Travel to the any corner of the world, without going around in circles</p>
+			</div>
+			<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+				<span class="fa fa-play"></span>
+			</a>
+		</div>
+	</div>
+</div>
+
+<section class="ftco-section ftco-no-pb ftco-no-pt">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="ftco-search d-flex justify-content-center">
+					<div class="row">
+						<div class="col-md-12 nav-link-wrap">
+							<div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+								<a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Recherche</a>
+
+								<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Hotel</a>
+
 							</div>
-							<div class="social-icons col-lg-6 col-md-4 col-sm-3">
-								<ul class="list-social">
-									<li><a href="#" title="Follow on Facebook"><i class="fa fa-facebook-square"></i><span> staffingagency</span></a></li>
-									<li><a href="#" title="Follow on Twitter"><i class="fa fa-twitter-square"></i><span> staffingagency</span></a></li>
-									<li><a href="#" title="Follow on Linkedin"><i class="fa fa-linkedin-square"></i><span> staffingagency</span></a></li>
-								</ul>
+						</div>
+						<div class="col-md-12 tab-wrap">
+
+							<div class="tab-content" id="v-pills-tabContent">
+
+								<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+									<form action="#" class="search-property-1">
+										<div class="row no-gutters">
+											<div class="col-md d-flex">
+												<div class="form-group p-4 border-0">
+													<label for="#">Destinations</label>
+													<div class="form-field">
+														<div class="icon"><span class="fa fa-search"></span></div>
+														<input type="text" class="form-control" placeholder="Search place">
+													</div>
+												</div>
+											</div>
+											<div class="col-md d-flex">
+												<div class="form-group p-4">
+													<label for="#">Date</label>
+													<div class="form-field">
+														<div class="icon"><span class="fa fa-calendar"></span></div>
+														<input type="text" class="form-control checkin_date" placeholder="Check In Date">
+													</div>
+												</div>
+											</div>
+											<div class="col-md d-flex">
+												<div class="form-group p-4">
+													<label for="#">Check-out date</label>
+													<div class="form-field">
+														<div class="icon"><span class="fa fa-calendar"></span></div>
+														<input type="text" class="form-control checkout_date" placeholder="Check Out Date">
+													</div>
+												</div>
+											</div>
+											<div class="col-md d-flex">
+												<div class="form-group p-4">
+													<label for="#">Prix</label>
+													<div class="form-field">
+														<div class="select-wrap">
+															<div class="icon"><span class="fa fa-chevron-down"></span></div>
+															<select name="" id="" class="form-control">
+																<option value="">$100</option>
+																<option value="">$10,000</option>
+																<option value="">$50,000</option>
+																<option value="">$100,000</option>
+																<option value="">$200,000</option>
+																<option value="">$300,000</option>
+																<option value="">$400,000</option>
+																<option value="">$500,000</option>
+																<option value="">$600,000</option>
+																<option value="">$700,000</option>
+																<option value="">$800,000</option>
+																<option value="">$900,000</option>
+																<option value="">$1,000,000</option>
+																<option value="">$2,000,000</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md d-flex">
+												<div class="form-group d-flex w-100 border-0">
+													<div class="form-field w-100 align-items-center d-flex">
+														<input type="submit" value="Search" class="align-self-stretch form-control btn btn-primary">
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+
+								<div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
+									<form action="#" class="search-property-1">
+										<div class="row no-gutters">
+											<div class="col-lg d-flex">
+												<div class="form-group p-4 border-0">
+													<label for="#">Destination</label>
+													<div class="form-field">
+														<div class="icon"><span class="fa fa-search"></span></div>
+														<input type="text" class="form-control" placeholder="Search place">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg d-flex">
+												<div class="form-group p-4">
+													<label for="#">Check-in date</label>
+													<div class="form-field">
+														<div class="icon"><span class="fa fa-calendar"></span></div>
+														<input type="text" class="form-control checkin_date" placeholder="Check In Date">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg d-flex">
+												<div class="form-group p-4">
+													<label for="#">Check-out date</label>
+													<div class="form-field">
+														<div class="icon"><span class="fa fa-calendar"></span></div>
+														<input type="text" class="form-control checkout_date" placeholder="Check Out Date">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg d-flex">
+												<div class="form-group p-4">
+													<label for="#">Price Limit</label>
+													<div class="form-field">
+														<div class="select-wrap">
+															<div class="icon"><span class="fa fa-chevron-down"></span></div>
+															<select name="" id="" class="form-control">
+																<option value="">$100</option>
+																<option value="">$10,000</option>
+																<option value="">$50,000</option>
+																<option value="">$100,000</option>
+																<option value="">$200,000</option>
+																<option value="">$300,000</option>
+																<option value="">$400,000</option>
+																<option value="">$500,000</option>
+																<option value="">$600,000</option>
+																<option value="">$700,000</option>
+																<option value="">$800,000</option>
+																<option value="">$900,000</option>
+																<option value="">$1,000,000</option>
+																<option value="">$2,000,000</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg d-flex">
+												<div class="form-group d-flex w-100 border-0">
+													<div class="form-field w-100 align-items-center d-flex">
+														<input type="submit" value="Search" class="align-self-stretch form-control btn btn-primary p-0">
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="header-wrapper">
-				<div class="container main-header-container">
-					<div class="site-branding">
-						<a href="index.html.twig" class="logo-link" rel="home" target="_self"><img src="../images/logo.png" alt="logo" /></a> </div>
-
-					<nav id="site-navigation" class="main-navigation" data-el="aria">
-						<ul id="mastmenu" class="nav primary-menu">
-							<li id="menu-item-297" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-297"><a href="index.html.twig" aria-current="page">Home</a></li>
-							<li id="menu-item-39" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39"><a href="{{ path('app_user_index') }}">Utilisateurs</a></li>
-							<li id="menu-item-319" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-319"><a href="{{ path('app_vol_index') }}">Vols</a></li>
-							<li id="menu-item-320" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-320"><a href="{{ path('app_reservation_index') }}">Réservations</a></li>
-							<li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41"><a href="{{ path('app_avion_index') }}">Avions</a></li>
-							<li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41"><a href="{{ path('app_modele_index') }}">Modèles</a></li>
-							<li id="menu-item-122" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-122"><a href="#contact">Contact</a></li>
-						</ul>
-					</nav>
-					<nav id="site-nav-tools" class="site-nav-tools">
-						<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false" data-el="aria">
-						<span class="screen-reader-text">Primary Menu</span>
-						<span class="menu-icon"></span>
-					</button>
-					</nav>
-				</div>
-			</div>
-		</header>
-		<!-- #masthead -->
-		<div id="content" class="site-content">
-
-			<div id="primary" class="content-area front-page-content-area">
-				<main id="main" class="site-main">
-					<section id="hero" class="section hero-section" data-eltype="frontpagesection">
-						<div class="section-inner">
-							<div class="section-deco" style="background-image:url(../../../../../Users/romar/Downloads/Airlines-Aviation-Services-Bootstrap-Landing-Page-Template_Html/Airlines_Aviation_Services_Bootstrap_Landing_Page_Template/html/images/hero.jpg);"></div>
-							<div class="section-content">
-								<div class="section-body">
-									<div class="container">
-										<div class="section-header">
-											<h2 class="section-title">Our Every Flight Is An Unforgettable Experience.</h2>
-											<div class="section-subtitle">Changing The Experience You Travel Can Change Your Life.</div>
-										</div>
-										<div class="section-actions">
-											<ul class="action-links">
-												<li><a class="hero-link" href="#">Discover</a></li>
-												<li><a class="hero-link" href="#">See Tarrif</a></li>
-											</ul>
-										</div>
-										<div class="section-desc">Reduce Stress & Travel Faster</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section id="about" class="section about-section" data-eltype="frontpagesection">
-						<div class="container wide-container section-inner">
-							<div class="about-page">
-								<div class="row">
-									<div class="col-md-6 service-box-col-first">
-										<div class="service-box">
-											<div class="entry-featured mobile-show"><img width="689" height="487" src="../images/about-1.png" class="attachment-full size-full wp-post-image" alt="" /></div>
-											<div class="entry-content">
-												<div class="entry-header">
-													<h3 class="entry-title">Save Time and Energy<br>Let Us Help You Reach Safely</h3>
-												</div>
-												<div class="entry-summary">
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua. Fermentum odio eu feugiat pretium nibh ipsum.&hellip;</p>
-												</div>
-												<div class="entry-footer"><a class="button entry-rmore-link" href="">Read More</a></div>
-											</div>
-											<div class="entry-featured desktop-show"><img width="689" height="487" src="../images/about-1.png" class="attachment-full size-full wp-post-image" alt="" /></div>
-										</div>
-									</div>
-									<div class="col-md-6 service-box-col">
-										<div class="service-box">
-											<div class="entry-featured"><img width="689" height="486" src="../images/about-2.png" class="attachment-full size-full wp-post-image" alt="" /></div>
-											<div class="entry-content">
-												<div class="entry-header">
-													<h3 class="entry-title">Where Every Fly is an<br> Unforgettable Experience.</h3>
-												</div>
-												<div class="entry-summary">
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua. Fermentum odio eu feugiat pretium nibh ipsum.&hellip;</p>
-												</div>
-												<div class="entry-footer"><a class="button entry-rmore-link" href="">Read More</a></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-
-
-					<section id="services" class="section services-section" data-eltype="frontpagesection">
-						<div class="wide-container section-inner">
-							<div class="section-header section-header-style-default">
-								<div class="container">
-									<h2 class="section-title">See What We Have to Offer </h2>
-									<div class="section-desc">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</p>
-									</div>
-								</div>
-							</div>
-							<div class="service-post-entries">
-								<div class="service-slider owl-carousel">
-									<div class="service-post-entry-col">
-										<article class="loop-service-grid-hentry post-405 services type-services status-publish has-post-thumbnail hentry">
-											<div class="entry-thumbnail">
-												<a class="entry-thumbnail-link" href="" title="Helicoptor or Chopper" style="background-image: url('../../../../../Users/romar/Downloads/Airlines-Aviation-Services-Bootstrap-Landing-Page-Template_Html/Airlines_Aviation_Services_Bootstrap_Landing_Page_Template/html/images/blog4.jpg');">
-                                                <img width="761" height="508" src="../images/blog4.jpg" class="attachment-full size-full wp-post-image" alt=""/></a>
-												<header class="entry-header">
-													<h3 class="entry-title"><a href="" rel="bookmark">Helicoptor or Chopper</a></h3>
-												</header>
-											</div>
-											<div class="entry-body">
-												<div class="entry-summary">
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.&hellip;</p>
-												</div>
-												<footer class="entry-footer">
-													<div class="entry-read-more"><a class="read-more-link button btn" href="">Read More</a></div>
-												</footer>
-											</div>
-										</article>
-									</div>
-									<div class="service-post-entry-col">
-										<article class="loop-service-grid-hentry post-421 services type-services status-publish has-post-thumbnail hentry">
-											<div class="entry-thumbnail">
-												<a class="entry-thumbnail-link" href="" title="Private Charter Planes" style="background-image: url('../public/images/blog1.jpg');">
-                                                <img width="761" height="508" src="../images/blog1.jpg" class="attachment-full size-full wp-post-image" alt="" /></a>
-												<header class="entry-header">
-													<h3 class="entry-title"><a href="" rel="bookmark">Private Charter Planes</a></h3>
-												</header>
-											</div>
-											<div class="entry-body">
-												<div class="entry-summary">
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</p>
-												</div>
-												<footer class="entry-footer">
-													<div class="entry-read-more"><a class="read-more-link button btn" href="">Read More</a></div>
-												</footer>
-											</div>
-										</article>
-									</div>
-									<div class="service-post-entry-col">
-										<article class="loop-service-grid-hentry post-400 services type-services status-publish has-post-thumbnail hentry">
-											<div class="entry-thumbnail">
-												<a class="entry-thumbnail-link" href="" title="Helicoptor or Chopper" style="background-image: url('../public/images/blog2.jpg');">
-                                                <img width="761" height="508" src="../images/blog2.jpg" class="attachment-full size-full wp-post-image" alt="" /></a>
-												<header class="entry-header">
-													<h3 class="entry-title"><a href="" rel="bookmark">Helicoptor or Chopper</a></h3>
-												</header>
-											</div>
-											<div class="entry-body">
-												<div class="entry-summary">
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.&hellip;</p>
-												</div>
-												<footer class="entry-footer">
-													<div class="entry-read-more"><a class="read-more-link button btn" href="">Read More</a></div>
-												</footer>
-											</div>
-										</article>
-									</div>
-									<div class="service-post-entry-col">
-										<article class="loop-service-grid-hentry post-402 services type-services status-publish has-post-thumbnail hentry">
-											<div class="entry-thumbnail">
-												<a class="entry-thumbnail-link" href="" title="Private&lt;br&gt;AIr Ticketing" style="background-image: url('../public/images/blog3.jpg');">
-                                                <img width="760" height="508" src="../images/blog3.jpg" class="attachment-full size-full wp-post-image" alt=""/></a>
-												<header class="entry-header">
-													<h3 class="entry-title"><a href="" rel="bookmark">Private<br>AIr Ticketing</a></h3>
-												</header>
-											</div>
-											<div class="entry-body">
-												<div class="entry-summary">
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.&hellip;</p>
-												</div>
-												<footer class="entry-footer">
-													<div class="entry-read-more"><a class="read-more-link button btn" href="">Read More</a></div>
-												</footer>
-											</div>
-										</article>
-									</div>
-									<div class="service-post-entry-col">
-										<article class="loop-service-grid-hentry post-401 services type-services status-publish has-post-thumbnail hentry">
-											<div class="entry-thumbnail">
-												<a class="entry-thumbnail-link" href="" title="Private&lt;br&gt;AIr Ticketing" style="background-image: url('../../../../../Users/romar/Downloads/Airlines-Aviation-Services-Bootstrap-Landing-Page-Template_Html/Airlines_Aviation_Services_Bootstrap_Landing_Page_Template/html/images/blog5.jpg');"><img width="760" height="508" src="../images/blog5.jpg" class="attachment-full size-full wp-post-image" alt="" /></a>
-												<header class="entry-header">
-													<h3 class="entry-title"><a href="" rel="bookmark">Private<br>AIr Ticketing</a></h3>
-												</header>
-											</div>
-											<div class="entry-body">
-												<div class="entry-summary">
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.&hellip;</p>
-												</div>
-												<footer class="entry-footer">
-													<div class="entry-read-more"><a class="read-more-link button btn" href="">Read More</a></div>
-												</footer>
-											</div>
-										</article>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section id="staff" class="section staff-section" data-eltype="frontpagesection">
-						<div class="section-inner">
-							<div class="section-header">
-								<div class="container">
-									<h2 class="section-title">The Best &amp; Experienced Pilots for Safety Travel</h2>
-								</div>
-							</div>
-							<div class="section-content">
-								<div class="container">
-									<div class="staff-boxes">
-										<div class="staff-box-col">
-											<div class="staff-box">
-												<div class="entry-thumbnail">
-													<img src="../images/staf1.jpg" alt="" />
-												</div>
-												<div class="entry-body">
-													<div class="entry-header">
-														<h3 class="title">Samantha U</h3>
-														<div class="desc">
-															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua. Fermentum odio eu feugiat pretium nibh ipsum.</p>
-														</div>
-													</div>
-													<div class="entry-footer">
-														<ul class="list-social">
-															<li>
-																<a title="Follow on Facebook" href="#"><i class="fa fa-facebook-square"></i></a>
-															</li>
-															<li>
-																<a title="Follow on twitter" href="#"><i class="fa fa-twitter-square"></i></a>
-															</li>
-															<li>
-																<a title="Follow on Pinterest" href="#"><i class="fa fa-pinterest-square"></i></a>
-															</li>
-															<li>
-																<a title="Follow on Youtube" href="#"><i class="fa fa-linkedin-square"></i></a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="staff-box-col">
-											<div class="staff-box">
-												<div class="entry-thumbnail">
-													<img src="../images/staf2.jpg" alt="" />
-												</div>
-												<div class="entry-body">
-													<div class="entry-header">
-														<h3 class="title">Andrew Michael</h3>
-														<div class="desc">
-															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua. Fermentum odio eu feugiat pretium nibh ipsum.</p>
-														</div>
-													</div>
-													<div class="entry-footer">
-														<ul class="list-social">
-															<li>
-																<a title="Follow on Facebook" href="#"><i class="fa fa-facebook-square"></i></a>
-															</li>
-															<li>
-																<a title="Follow on twitter" href="#"><i class="fa fa-twitter-square"></i></a>
-															</li>
-															<li>
-																<a title="Follow on Pinterest" href="#"><i class="fa fa-pinterest-square"></i></a>
-															</li>
-															<li>
-																<a title="Follow on Youtube" href="#"><i class="fa fa-linkedin-square"></i></a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section id="benefits" class="section benefits-section" style="background-image:url(../../../../../Users/romar/Downloads/Airlines-Aviation-Services-Bootstrap-Landing-Page-Template_Html/Airlines_Aviation_Services_Bootstrap_Landing_Page_Template/html/images/bkg-benefits.jpg)" data-eltype="frontpagesection">
-						<div class="container section-inner">
-							<div class="section-header">
-								<h2 class="section-title">The event Benefits</h2>
-							</div>
-							<div class="section-content">
-
-								<div class="row benefits-boxes">
-									<div class="col-md-4 benefits-box-col">
-										<div class="benefits-box">
-											<div class="entry-thumbnail">
-												<img src="../images/icon1.png" alt="" />
-												<h3 class="title">
-													<p>Comfort <br>&amp; Luxury</p>
-												</h3>
-											</div>
-											<div class="entry-body">
-												<div class="desc">
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua. Fermentum odio eu feugiat pretium nibh ipsum.</p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 benefits-box-col">
-										<div class="benefits-box">
-											<div class="entry-thumbnail">
-												<img src="../images/icon2.png" alt="" />
-												<h3 class="title">Safety &amp; <br>Confidentiality</h3>
-											</div>
-											<div class="entry-body">
-												<div class="desc">
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua. Fermentum odio eu feugiat pretium nibh ipsum.</p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 benefits-box-col">
-										<div class="benefits-box">
-											<div class="entry-thumbnail">
-												<img src="../images/icon3.png" alt="" />
-												<h3 class="title">Personal <br>Schedule</h3>
-											</div>
-											<div class="entry-body">
-												<div class="desc">
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua. Fermentum odio eu feugiat pretium nibh ipsum.</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section id="faq-testimonials" class="section testimonials-section" data-eltype="frontpagesection">
-						<div class="container section-inner">
-							<div class="row">
-								<div class="col-md-6 faqs-section">
-									<div class="section-header ">
-										<h2 class="section-title">Frequently Asked Questions</h2>
-										<div class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed dot eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum</div>
-									</div>
-									<div class="faq-questions" id="accordion">
-										<div class="card">
-											<div class="questions">
-												<div class="card-header question" id="heading-1" data-toggle="collapse" data-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-													<button class="btn btn-link">
-                                        What are the charges for Personal Chopper                                    </button>
-												</div>
-												<div class="collapse answer show" id="collapse-1" aria-labelledby="heading-1" data-parent="#accordion">
-													<div class="card-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="card">
-											<div class="questions">
-												<div class="card-header question" id="heading-2" data-toggle="collapse" data-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-													<button class="btn btn-link">
-                                        Can I Get the Fully Loaded Personal Carter PLane                                    </button>
-												</div>
-												<div class="collapse answer " id="collapse-2" aria-labelledby="heading-2" data-parent="#accordion">
-													<div class="card-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="card">
-											<div class="questions">
-												<div class="card-header question" id="heading-3" data-toggle="collapse" data-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-													<button class="btn btn-link">
-                                        Whats the Price for Personal Chopper                                    </button>
-												</div>
-												<div class="collapse answer " id="collapse-3" aria-labelledby="heading-3" data-parent="#accordion">
-													<div class="card-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum tellus pellentesque eu tincidunt tortor aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Rutrum tellus pellentesque eu tincidunt tortor aliquam.</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="card">
-											<div class="questions">
-												<div class="card-header question" id="heading-4" data-toggle="collapse" data-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
-													<button class="btn btn-link">
-                                        How many days before we should book the flight                                    </button>
-												</div>
-												<div class="collapse answer " id="collapse-4" aria-labelledby="heading-4" data-parent="#accordion">
-													<div class="card-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum tellus pellentesque eu tincidunt tortor aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Rutrum tellus pellentesque eu tincidunt tortor aliquam.</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="card">
-											<div class="questions">
-												<div class="card-header question" id="heading-5" data-toggle="collapse" data-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
-													<button class="btn btn-link">How many people can travel in single Chopper</button>
-												</div>
-												<div class="collapse answer " id="collapse-5" aria-labelledby="heading-5" data-parent="#accordion">
-													<div class="card-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum tellus pellentesque eu tincidunt tortor aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Rutrum tellus pellentesque eu tincidunt tortor aliquam.</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="card">
-											<div class="questions">
-												<div class="card-header question" id="heading-6" data-toggle="collapse" data-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
-													<button class="btn btn-link">Do you refund the amount charged?</button>
-												</div>
-												<div class="collapse answer " id="collapse-6" aria-labelledby="heading-6" data-parent="#accordion">
-													<div class="card-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum tellus pellentesque eu tincidunt tortor aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Rutrum tellus pellentesque eu tincidunt tortor aliquam.</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 testimonials-section">
-									<div class="section-header ">
-										<h2 class="section-title">Customer Testimonials</h2>
-										<div class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tellus pellentesque eu tincidunt tortor aliquam.</div>
-									</div>
-									<div class="section-content">
-										<div class="testimonials-items owl-carousel" data-slider-id="1">
-											<div class="couple">
-												<div class="testimonial has-post-thumbnail">
-													<div class="entry-thumbnail">
-														<div class="bkg-testimonial"><img width="102" height="104" src="../images/user2.jpg.png" class="attachment-full size-full wp-post-image" alt="" /></div>
-													</div>
-													<div class="entry-body">
-														<div class="entry-footer">
-															<div class="entry-summary">Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-															<div class="info">
-																<h4 class="entry-title">Samantha</h4><span class="entry-loc">(Marneting Manager)</span></div>
-														</div>
-													</div>
-												</div>
-												<div class="testimonial has-post-thumbnail">
-													<div class="entry-thumbnail">
-														<div class="bkg-testimonial"><img width="104" height="106" src="../images/user3.jpg.png" class="attachment-full size-full wp-post-image" alt="" /></div>
-													</div>
-													<div class="entry-body">
-														<div class="entry-footer">
-															<div class="entry-summary">Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-															<div class="info">
-																<h4 class="entry-title">Michael Smith</h4><span class="entry-loc">(Marneting Manager)</span></div>
-														</div>
-													</div>
-												</div>
-												<div class="testimonial has-post-thumbnail">
-													<div class="entry-thumbnail">
-														<div class="bkg-testimonial"><img width="102" height="104" src="../images/user2.jpg.png" class="attachment-full size-full wp-post-image" alt="" /></div>
-													</div>
-													<div class="entry-body">
-														<div class="entry-footer">
-															<div class="entry-summary">Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, labore et dolore magna aliqua.</div>
-															<div class="info">
-																<h4 class="entry-title">Samantha</h4><span class="entry-loc">(Marketing Manahger)</span></div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="couple">
-												<div class="testimonial has-post-thumbnail">
-													<div class="entry-thumbnail">
-														<div class="bkg-testimonial"><img width="104" height="106" src="../images/user3.jpg.png" class="attachment-full size-full wp-post-image" alt="" /></div>
-													</div>
-													<div class="entry-body">
-														<div class="entry-footer">
-															<div class="entry-summary">Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, labore et dolore magna aliqua.</div>
-															<div class="info">
-																<h4 class="entry-title">Andrew</h4><span class="entry-loc">(Marketing Manahger)</span></div>
-														</div>
-													</div>
-												</div>
-												<div class="testimonial has-post-thumbnail">
-													<div class="entry-thumbnail">
-														<div class="bkg-testimonial"><img width="104" height="106" src="../images/user3.jpg.png" class="attachment-full size-full wp-post-image" alt="" /></div>
-													</div>
-													<div class="entry-body">
-														<div class="entry-footer">
-															<div class="entry-summary">Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, labore et dolore magna aliqua.</div>
-															<div class="info">
-																<h4 class="entry-title">Mathews</h4><span class="entry-loc">(Marketing Manahger)</span></div>
-														</div>
-													</div>
-												</div>
-												<div class="testimonial has-post-thumbnail">
-													<div class="entry-thumbnail">
-														<div class="bkg-testimonial"><img width="102" height="104" src="../images/user2.jpg.png" class="attachment-full size-full wp-post-image" alt="" /></div>
-													</div>
-													<div class="entry-body">
-														<div class="entry-footer">
-															<div class="entry-summary">Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, labore et dolore magna aliqua.</div>
-															<div class="info">
-																<h4 class="entry-title">Samantha</h4><span class="entry-loc">(Marketing Manahger)</span></div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section id="articles" class="section articles-section" data-eltype="frontpagesection">
-						<div class="container section-inner">
-							<div class="section-header">
-								<h2 class="section-title">Recent Aviation News & Events</h2>
-								<div class="section-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed dot eiusmod tempor incididunt ut labore et dolore magna aliqua. Rutrum tellus pellentesque eu tincidunt tortor aliquam.</div>
-							</div>
-
-							<div class="section-content">
-								<div class="articles-grid articles-slider owl-carousel">
-									<div class="article-grid-col">
-										<article class="grid-hentry post-462 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-											<div class="row-none">
-												<div class="col-md-6 post-thumbnail">
-													<a href=""><img width="300" height="200" src="../images/blog1-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="" /></a>
-												</div>
-												<div class="col-md-6 entry-body">
-													<div class="entry-body-content">
-														<header class="entry-header">
-															<h4 class="entry-title"><a href="" rel="bookmark">Digital Marketing Services For real Estate, medial sector, IT dept with Result Oriented</a></h4>
-														</header>
-														<div class="entry-summary">
-															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor aliquam nulla facilisi cras fermentum odio. Sed&hellip;</p>
-														</div>
-														<div class="entry-meta">
-															<span class="month-year">June 17, 2019 /</span><span class="byline"> by <span class="author vcard"><a class="url fn n" href="">admin</a></span></span>
-														</div>
-														<footer class="entry-footer">
-															<a class="button btn entry-rmore-link" href="">Continue Reading</a>
-														</footer>
-													</div>
-												</div>
-											</div>
-										</article>
-									</div>
-									<div class="article-grid-col">
-										<article class="grid-hentry post-458 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-											<div class="row-none">
-												<div class="col-md-6 post-thumbnail">
-													<a href=""><img width="300" height="201" src="../images/blog3-300x201.jpg" class="attachment-medium size-medium wp-post-image" alt="" /></a>
-												</div>
-												<div class="col-md-6 entry-body">
-													<div class="entry-body-content">
-														<header class="entry-header">
-															<h4 class="entry-title"><a href="" rel="bookmark">Community Fitness Facility Classes Personal Training</a></h4>
-														</header>
-														<div class="entry-summary">
-															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor aliquam nulla facilisi cras fermentum odio. Sed&hellip;</p>
-														</div>
-														<div class="entry-meta">
-															<span class="month-year">June 17, 2019 /</span><span class="byline"> by <span class="author vcard"><a class="url fn n" href="">admin</a></span></span>
-														</div>
-														<footer class="entry-footer">
-															<a class="button btn entry-rmore-link" href="">Continue Reading</a>
-														</footer>
-													</div>
-												</div>
-											</div>
-										</article>
-									</div>
-									<div class="article-grid-col">
-										<article class="grid-hentry post-459 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-											<div class="row-none">
-												<div class="col-md-6 post-thumbnail">
-													<a href=""><img width="300" height="200" src="../images/blog4-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt=""/></a>
-												</div>
-												<div class="col-md-6 entry-body">
-													<div class="entry-body-content">
-														<header class="entry-header">
-															<h4 class="entry-title"><a href="" rel="bookmark">Digital Marketing Services For real Estate, medial sector, IT dept with Result Oriented</a></h4>
-														</header>
-														<div class="entry-summary">
-															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor aliquam nulla facilisi cras fermentum odio. Sed&hellip;</p>
-														</div>
-														<div class="entry-meta">
-															<span class="month-year">June 17, 2019 /</span><span class="byline"> by <span class="author vcard"><a class="url fn n" href="">admin</a></span></span>
-														</div>
-														<footer class="entry-footer">
-															<a class="button btn entry-rmore-link" href="">Continue Reading</a>
-														</footer>
-													</div>
-												</div>
-											</div>
-										</article>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<section id="cta" class="section cta-section" style="background-image:url(../../../../../Users/romar/Downloads/Airlines-Aviation-Services-Bootstrap-Landing-Page-Template_Html/Airlines_Aviation_Services_Bootstrap_Landing_Page_Template/html/images/cta.jpg)" data-eltype="frontpagesection">
-						<div class="container wide-container section-inner">
-							<div class="cta-box row">
-								<div class="cta-box-info col-lg-7 col-xs-12">
-									<div class="cta-box-info-body">
-										<h2 class="cta-box-title">Looking to hire Personal &amp; Private Carter &amp; Choppers?</h2>
-										<div class="cta-box-desc">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna...</p>
-										</div>
-									</div>
-								</div>
-								<div class="cta-box-actions col-lg-5 col-xs-12">
-									<div class="cta-actions"><a href="#contact" class="button cta-box-action-link" target="_self">Contact Us</a>
-										<div class="cta-box-cta_call">
-											<p>Or Call <a href="tel:">1-800-234-567</a></p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-				</main>
 			</div>
 		</div>
+	</div>
+</section>
 
-		<footer id="colophon" class="site-footer text-center" style="background-image: url();">
-			<div class="footer-middle">
-				<div class="container">
-					<div class="row">
-						<div class="col contact-info-wrap">
-							<div class="contact-info">
-								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-lg-5 col-xl-5 footer-logo-col">
-										<div class="content">
-											<div class="footer-desc">
-												<h2>Call us for Need more Information ?</h2>
-												<p>145 Amands Street, Beverly Hill Sights,<br /> NYC 2345, United Kingdom<br /> E-Mail: <a href="mailto:">info@taxiservices.com</a></p>
-												<h4>Call : <a href="tel:">(800) 0123 4567 890</a></h4>
-											</div>
-											<div class="col social-icons-col">
-												<ul class="list-social">
-													<li><a href="#" title="Follow on Facebook"><i class="fa fa-facebook-square"></i><span> staffingagency</span></a></li>
-													<li><a href="#" title="Follow on Twitter"><i class="fa fa-twitter-square"></i><span> staffingagency</span></a></li>
-													<li><a href="#" title="Follow on Linkedin"><i class="fa fa-linkedin-square"></i><span> staffingagency</span></a></li>
-													<li><a href="#" title="Follow on Instagram"><i class="fa fa-instagram"></i><span> staffingagency</span></a></li>
-													<li><a href="#" title="Follow on Pinterest"><i class="fa fa-pinterest"></i><span> staffingagency</span></a></li>
-												</ul>
-											</div>
-										</div>
+<section class="ftco-section services-section">
+	<div class="container">
+		<div class="row d-flex">
+			<div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
+				<div class="w-100">
+					<span class="subheading">Welcome to Pacific</span>
+					<h2 class="mb-4">It's time to start your adventure</h2>
+					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+						A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+					<p><a href="#" class="btn btn-primary py-3 px-4">Search Destination</a></p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+						<div class="services services-1 color-1 d-block img" style="background-image: url({{ asset('images/services-1.jpg') }});">
+							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-paragliding"></span></div>
+							<div class="media-body">
+								<h3 class="heading mb-3">Activities</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+						<div class="services services-1 color-2 d-block img" style="background-image: url({{ 'images/services-2.jpg' }});">
+							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+							<div class="media-body">
+								<h3 class="heading mb-3">Travel Arrangements</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+						<div class="services services-1 color-3 d-block img" style="background-image: url({{ asset('images/services-3.jpg') }});">
+							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-tour-guide"></span></div>
+							<div class="media-body">
+								<h3 class="heading mb-3">Private Guide</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+						<div class="services services-1 color-4 d-block img" style="background-image: url({{ asset('images/services-4.jpg') }});">
+							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-map"></span></div>
+							<div class="media-body">
+								<h3 class="heading mb-3">Location Manager</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section img ftco-select-destination" style="background-image: url({{ asset('images/bg_3.jpg') }});">
+	<div class="container">
+		<div class="row justify-content-center pb-4">
+			<div class="col-md-12 heading-section text-center ftco-animate">
+				<span class="subheading">Pacific Provide Places</span>
+				<h2 class="mb-4">Select Your Destination</h2>
+			</div>
+		</div>
+	</div>
+	<div class="container container-2">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="carousel-destination owl-carousel ftco-animate">
+					<div class="item">
+						<div class="project-destination">
+							<a href="#" class="img" style="background-image: url({{ asset('images/place-1.jpg') }});">
+								<div class="text">
+									<h3>Philippines</h3>
+									<span>8 Tours</span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="project-destination">
+							<a href="#" class="img" style="background-image: url({{ asset('images/place-2.jpg') }});">
+								<div class="text">
+									<h3>Canada</h3>
+									<span>2 Tours</span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="project-destination">
+							<a href="#" class="img" style="background-image: url({{ asset('images/place-3.jpg') }});">
+								<div class="text">
+									<h3>Thailand</h3>
+									<span>5 Tours</span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="project-destination">
+							<a href="#" class="img" style="background-image: url({{ asset('images/place-4.jpg') }});">
+								<div class="text">
+									<h3>Autralia</h3>
+									<span>5 Tours</span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="project-destination">
+							<a href="#" class="img" style="background-image: url({{ asset('images/place-5.jpg') }});">
+								<div class="text">
+									<h3>Greece</h3>
+									<span>7 Tours</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center pb-4">
+			<div class="col-md-12 heading-section text-center ftco-animate">
+				<span class="subheading">Destination</span>
+				<h2 class="mb-4">Tour Destination</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 ftco-animate">
+				<div class="project-wrap">
+					<a href="#" class="img" style="background-image: url({{ asset('images/destination-1.jpg') }});">
+						<span class="price">$550/person</span>
+					</a>
+					<div class="text p-4">
+						<span class="days">8 Days Tour</span>
+						<h3><a href="#">Banaue Rice Terraces</a></h3>
+						<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+						<ul>
+							<li><span class="flaticon-shower"></span>2</li>
+							<li><span class="flaticon-king-size"></span>3</li>
+							<li><span class="flaticon-mountains"></span>Near Mountain</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ftco-animate">
+				<div class="project-wrap">
+					<a href="#" class="img" style="background-image: url({{ asset('images/destination-2.jpg') }});">
+						<span class="price">$550/person</span>
+					</a>
+					<div class="text p-4">
+						<span class="days">10 Days Tour</span>
+						<h3><a href="#">Banaue Rice Terraces</a></h3>
+						<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+						<ul>
+							<li><span class="flaticon-shower"></span>2</li>
+							<li><span class="flaticon-king-size"></span>3</li>
+							<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ftco-animate">
+				<div class="project-wrap">
+					<a href="#" class="img" style="background-image: url({{ asset('images/destination-3.jpg') }});">
+						<span class="price">$550/person</span>
+					</a>
+					<div class="text p-4">
+						<span class="days">7 Days Tour</span>
+						<h3><a href="#">Banaue Rice Terraces</a></h3>
+						<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+						<ul>
+							<li><span class="flaticon-shower"></span>2</li>
+							<li><span class="flaticon-king-size"></span>3</li>
+							<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 ftco-animate">
+				<div class="project-wrap">
+					<a href="#" class="img" style="background-image: url({{ asset('images/destination-4.jpg') }});">
+						<span class="price">$550/person</span>
+					</a>
+					<div class="text p-4">
+						<span class="days">8 Days Tour</span>
+						<h3><a href="#">Banaue Rice Terraces</a></h3>
+						<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+						<ul>
+							<li><span class="flaticon-shower"></span>2</li>
+							<li><span class="flaticon-king-size"></span>3</li>
+							<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ftco-animate">
+				<div class="project-wrap">
+					<a href="#" class="img" style="background-image: url({{ asset('images/destination-5.jpg') }});">
+						<span class="price">$550/person</span>
+					</a>
+					<div class="text p-4">
+						<span class="days">10 Days Tour</span>
+						<h3><a href="#">Banaue Rice Terraces</a></h3>
+						<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+						<ul>
+							<li><span class="flaticon-shower"></span>2</li>
+							<li><span class="flaticon-king-size"></span>3</li>
+							<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ftco-animate">
+				<div class="project-wrap">
+					<a href="#" class="img" style="background-image: url({{ asset('images/destination-6.jpg') }});">
+						<span class="price">$550/person</span>
+					</a>
+					<div class="text p-4">
+						<span class="days">7 Days Tour</span>
+						<h3><a href="#">Banaue Rice Terraces</a></h3>
+						<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+						<ul>
+							<li><span class="flaticon-shower"></span>2</li>
+							<li><span class="flaticon-king-size"></span>3</li>
+							<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section ftco-about img"style="background-image: url({{ asset('images/bg_4.jpg') }});">
+	<div class="overlay"></div>
+	<div class="container py-md-5">
+		<div class="row py-md-5">
+			<div class="col-md d-flex align-items-center justify-content-center">
+				<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
+					<span class="fa fa-play"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section ftco-about ftco-no-pt img">
+	<div class="container">
+		<div class="row d-flex">
+			<div class="col-md-12 about-intro">
+				<div class="row">
+					<div class="col-md-6 d-flex align-items-stretch">
+						<div class="img d-flex w-100 align-items-center justify-content-center" style="background-image:url({{ asset('images/about-1.jpg') }});">
+						</div>
+					</div>
+					<div class="col-md-6 pl-md-5 py-5">
+						<div class="row justify-content-start pb-3">
+							<div class="col-md-12 heading-section ftco-animate">
+								<span class="subheading">About Us</span>
+								<h2 class="mb-4">Make Your Tour Memorable and Safe With Us</h2>
+								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+								<p><a href="#" class="btn btn-primary">Book Your Destination</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section testimony-section bg-bottom" style="background-image: url({{ asset('images/bg_1.jpg') }});">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row justify-content-center pb-4">
+			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+				<span class="subheading">Testimonial</span>
+				<h2 class="mb-4">Tourist Feedback</h2>
+			</div>
+		</div>
+		<div class="row ftco-animate">
+			<div class="col-md-12">
+				<div class="carousel-testimony owl-carousel">
+					<div class="item">
+						<div class="testimony-wrap py-4">
+							<div class="text">
+								<p class="star">
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</p>
+								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<div class="d-flex align-items-center">
+									<div class="user-img" style="background-image: url({{ asset('images/person_1.jpg') }})"></div>
+									<div class="pl-3">
+										<p class="name">Roger Scott</p>
+										<span class="position">Marketing Manager</span>
 									</div>
-									<div class="col-xs-12 col-sm-12 col-lg-7 col-xl-7 contact-info-col">
-										<div id="contact" class="contact-info-text">
-											<div class="wpcf7" id="wpcf7-f130-o1">
-												<div class="screen-reader-response"></div>
-												<form class="wpcf7-form">
-													<div class="form-content">
-														<div class="row">
-															<div class="col-12 col-lg-6">
-																<span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Your Name" required/></span>
-															</div>
-															<div class="col-12 col-lg-6">
-																<span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Your Email" required/></span>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-12">
-																<span class="wpcf7-form-control-wrap message"><textarea name="message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Your Message"></textarea></span>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-12">
-																<input type="submit" value="Contact Us" class="wpcf7-form-control wpcf7-submit" />
-															</div>
-														</div>
-													</div>
-													<div class="wpcf7-response-output wpcf7-display-none"></div>
-												</form>
-											</div>
-										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-wrap py-4">
+							<div class="text">
+								<p class="star">
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</p>
+								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<div class="d-flex align-items-center">
+									<div class="user-img" style="background-image: url({{ asset('images/person_2.jpg') }})"></div>
+									<div class="pl-3">
+										<p class="name">Roger Scott</p>
+										<span class="position">Marketing Manager</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-wrap py-4">
+							<div class="text">
+								<p class="star">
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</p>
+								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<div class="d-flex align-items-center">
+									<div class="user-img" style="background-image: url({{ asset('images/person_3.jpg') }})"></div>
+									<div class="pl-3">
+										<p class="name">Roger Scott</p>
+										<span class="position">Marketing Manager</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-wrap py-4">
+							<div class="text">
+								<p class="star">
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</p>
+								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<div class="d-flex align-items-center">
+									<div class="user-img" style="background-image: url({{ asset('images/person_1.jpg') }})"></div>
+									<div class="pl-3">
+										<p class="name">Roger Scott</p>
+										<span class="position">Marketing Manager</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-wrap py-4">
+							<div class="text">
+								<p class="star">
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</p>
+								<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<div class="d-flex align-items-center">
+									<div class="user-img" style="background-image: url({{ asset('images/person_2.jpg') }})"></div>
+									<div class="pl-3">
+										<p class="name">Roger Scott</p>
+										<span class="position">Marketing Manager</span>
 									</div>
 								</div>
 							</div>
@@ -721,37 +581,184 @@
 					</div>
 				</div>
 			</div>
-			<div class="footer-bottom">
-				<div class="container">
-					<div class="footer-menu-container">
-						<ul id="footer-menu" class="footer-menu">
-							<li id="menu-item-323" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-323"><a href="index.html.twig" aria-current="page">Home</a></li>
-							<li id="menu-item-83" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83"><a href="#about">About Us</a></li>
-							<li id="menu-item-84" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="#services">Our Services</a></li>
-							<li id="menu-item-324" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324"><a href="#why">Why Choose Us</a></li>
-							<li id="menu-item-417" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-417"><a href="#faq-testimonials">Read FAQ’s</a></li>
-							<li id="menu-item-85" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-85"><a href="#articles">Read Blog</a></li>
-							<li id="menu-item-325" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-325"><a href="#contact">Contact Us</a></li>
-						</ul>
-					</div>
-					<div class="site-info">
-						<p>(C) 2019. All Rights Reserved. Aeroplane Services. Developed by <a href="https://www.template.net" target="_blank" rel="noopener">Template.net</a></p>
+		</div>
+	</div>
+</section>
+
+
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center pb-4">
+			<div class="col-md-12 heading-section text-center ftco-animate">
+				<span class="subheading">Our Blog</span>
+				<h2 class="mb-4">Recent Post</h2>
+			</div>
+		</div>
+		<div class="row d-flex">
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry justify-content-end">
+					<a href="blog-single.html" class="block-20" style="background-image: url({{ asset('images/image_1.jpg') }});">
+					</a>
+					<div class="text">
+						<div class="d-flex align-items-center mb-4 topp">
+							<div class="one">
+								<span class="day">11</span>
+							</div>
+							<div class="two">
+								<span class="yr">2020</span>
+								<span class="mos">September</span>
+							</div>
+						</div>
+						<h3 class="heading"><a href="#">Most Popular Place In This World</a></h3>
+						<!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+						<p><a href="#" class="btn btn-primary">Read more</a></p>
 					</div>
 				</div>
 			</div>
-		</footer>
-		<a href="javascript:void(0)" class="back-to-top" data-eltype="totopbtn">
-        <span class="screen-reader-text">Back to top</span>
-        <i class="fa fa-angle-up"></i>
-    </a>
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry justify-content-end">
+					<a href="blog-single.html" class="block-20" style="background-image: url({{ asset('images/image_2.jpg')}});">
+					</a>
+					<div class="text">
+						<div class="d-flex align-items-center mb-4 topp">
+							<div class="one">
+								<span class="day">11</span>
+							</div>
+							<div class="two">
+								<span class="yr">2020</span>
+								<span class="mos">September</span>
+							</div>
+						</div>
+						<h3 class="heading"><a href="#">Most Popular Place In This World</a></h3>
+						<!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+						<p><a href="#" class="btn btn-primary">Read more</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry">
+					<a href="blog-single.html" class="block-20" style="background-image: url({{ asset('images/image_3.jpg') }});">
+					</a>
+					<div class="text">
+						<div class="d-flex align-items-center mb-4 topp">
+							<div class="one">
+								<span class="day">11</span>
+							</div>
+							<div class="two">
+								<span class="yr">2020</span>
+								<span class="mos">September</span>
+							</div>
+						</div>
+						<h3 class="heading"><a href="#">Most Popular Place In This World</a></h3>
+						<!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+						<p><a href="#" class="btn btn-primary">Read more</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<script type='text/javascript' src='../js/bootstrap.min.js'></script>
-	<script type='text/javascript' src='../js/jquery.fancybox.min.js'></script>
-	<script type='text/javascript' src='../js/owl.carousel.min.js'></script>
-	<script type='text/javascript' src='../js/slick.min.js'></script>
-	<script type='text/javascript' src='../js/script.min.js'></script>
-	<script type='text/javascript' src='../js/function.js'></script>
-</body>
+</section>
 
+<section class="ftco-intro ftco-section ftco-no-pt">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12 text-center">
+				<div class="img"  style="background-image: url({{ asset('images/bg_2.jpg') }}images/bg_2.jpg);">
+					<div class="overlay"></div>
+					<h2>We Are Pacific A Travel Agency</h2>
+					<p>We can manage your dream building A small river named Duden flows by their place</p>
+					<p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url({{ asset('images/bg_3.jpg') }});">
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-md pt-5">
+				<div class="ftco-footer-widget pt-md-5 mb-4">
+					<h2 class="ftco-heading-2">About</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+					<ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+						<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+						<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+						<li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md pt-5 border-left">
+				<div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+					<h2 class="ftco-heading-2">Infromation</h2>
+					<ul class="list-unstyled">
+						<li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
+						<li><a href="#" class="py-2 d-block">General Enquiries</a></li>
+						<li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
+						<li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
+						<li><a href="#" class="py-2 d-block">Refund Policy</a></li>
+						<li><a href="#" class="py-2 d-block">Call Us</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md pt-5 border-left">
+				<div class="ftco-footer-widget pt-md-5 mb-4">
+					<h2 class="ftco-heading-2">Experience</h2>
+					<ul class="list-unstyled">
+						<li><a href="#" class="py-2 d-block">Adventure</a></li>
+						<li><a href="#" class="py-2 d-block">Hotel and Restaurant</a></li>
+						<li><a href="#" class="py-2 d-block">Beach</a></li>
+						<li><a href="#" class="py-2 d-block">Nature</a></li>
+						<li><a href="#" class="py-2 d-block">Camping</a></li>
+						<li><a href="#" class="py-2 d-block">Party</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md pt-5 border-left">
+				<div class="ftco-footer-widget pt-md-5 mb-4">
+					<h2 class="ftco-heading-2">Have a Questions?</h2>
+					<div class="block-23 mb-3">
+						<ul>
+							<li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+							<li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+							<li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+
+				<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('js/scrollax.min.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{{ asset('js/google-map.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+
+</body>
 </html>
-{% endblock %}
