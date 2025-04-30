@@ -1,11 +1,15 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}New User{% endblock %}
+<head>
+    {% include 'head.html.twig' %}
+</head>
 
-{% block content %}
-    <h1>Create new User</h1>
+<body>
+    <h1>Inscription</h1>
 
     {{ include('user/_form.html.twig') }}
 
     <a href="{{ path('app_user_index') }}">back to list</a>
-{% endblock %}
+</body>
+</html>

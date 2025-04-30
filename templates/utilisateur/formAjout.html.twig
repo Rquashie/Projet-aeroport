@@ -1,9 +1,16 @@
-{% extends 'base.html.twig' %}
 
-{% block content %}
-    <h1> Ajouter un utilisateur</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html.twig' %}
+</head>
+
+<body>
+    <h1> Inscription</h1>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <button type = "submit">Ajouter</button>
     {{ form_end(form) }}
-{% endblock %}
+</body>
+</html>

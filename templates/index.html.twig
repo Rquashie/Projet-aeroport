@@ -181,7 +181,11 @@
 		</div>
 	</div>
 </section>
-
+{% if app.user %}
+	<div class="user-info">
+		Connecté en tant que : {{ app.user.prenom}}{{ app.user.nom}}
+	</div>
+{% endif %}
 <section class="ftco-section services-section">
 	<div class="container">
 		<div class="row d-flex">

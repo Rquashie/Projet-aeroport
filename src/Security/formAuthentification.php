@@ -17,7 +17,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class FormConnexionCheck extends AbstractLoginFormAuthenticator
+class formAuthentification extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
@@ -47,10 +47,10 @@ class FormConnexionCheck extends AbstractLoginFormAuthenticator
     {
         foreach ($token->getRoleNames() as $role) {
             if ($role === 'ROLE_ADMIN') {
-                return new RedirectResponse($this->urlGenerator->generate('accueil_admin'));
+                return new RedirectResponse($this->urlGenerator->generate('app_index'));
             }
             if ($role === 'ROLE_USER') {
-                return new RedirectResponse($this->urlGenerator->generate('accueil_user'));
+                return new RedirectResponse($this->urlGenerator->generate('app_index'));
             }
         }
         return null;
