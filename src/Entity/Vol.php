@@ -45,8 +45,7 @@ class Vol
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'refVol')]
     private Collection $reservations;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
+
 
     public function __construct()
     {
