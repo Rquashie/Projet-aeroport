@@ -48,6 +48,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
 
         $this->roles[] = new ArrayCollection();
+        $this->roles = ["ROLE_USER"];
     }
 
 

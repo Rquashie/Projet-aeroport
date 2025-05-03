@@ -12,22 +12,25 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 
 
 final class UserController extends AbstractController
 {
     #[Route('/user',name: 'app_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository ): Response
     {
-        if($this->isGranted('ROLE_ADMIN')){
-            return $this->render('user/index.html.twig', [
-                'users' => $userRepository->findAll(),
-            ]);
-        }
-        else {
-            return $this->render('index.html.twig') ;
-        }
+        $showModal = false ;
+
+      if(!$this->isGranted('ROLE_ADMIN')){
+          $showModal = true ;
+      };
+
+        return $this->render('index.html.twig', [
+            'users' => $userRepository->findAll() ,
+            'show_modal'=>$showModal] );
     }
+
 
     #[Route('/user/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request,EntityManagerInterface $entityManager , UserPasswordHasherInterface $passwordHasher): Response
