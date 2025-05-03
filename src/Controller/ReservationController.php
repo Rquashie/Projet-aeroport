@@ -17,8 +17,22 @@ final class ReservationController extends AbstractController
     #[Route(name: 'app_reservation_index', methods: ['GET'])]
     public function index(ReservationRepository $reservationRepository): Response
     {
+        if(!$this->isGranted('ROLE_USER')&& !$this->isGranted('ROLE_PILOTE')
+            && !$this->isGranted('ROLE_VOL') && !$this->isGranted('ROLE_ADMIN') ){
+            return $this->render('index.html.twig', [
+                'show_modal' => 'reservationConnexion',
+            ]);
+        }
+
+        if (!$this->isGranted('ROLE_USER')) {
+            return $this->render('index.html.twig', [
+                'show_modal' => 'reservation',
+            ]);
+        }
+
         return $this->render('reservation/index.html.twig', [
             'reservations' => $reservationRepository->findAll(),
+             'show_modal'=>false
         ]);
     }
 

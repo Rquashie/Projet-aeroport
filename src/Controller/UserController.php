@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\UserPiloteType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,15 +20,18 @@ final class UserController extends AbstractController
     #[Route('/user',name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository ): Response
     {
-        $showModal = false ;
 
-      if(!$this->isGranted('ROLE_ADMIN')){
-          $showModal = true ;
-      };
+        if(!$this->isGranted('ROLE_USER')&& !$this->isGranted('ROLE_PILOTE')
+            && !$this->isGranted('ROLE_VOL') && !$this->isGranted('ROLE_ADMIN') ){
+            return $this->render('index.html.twig', [
+                'show_modal' => 'userConnexion',
+            ]);
+        }
 
-        return $this->render('index.html.twig', [
+
+        return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll() ,
-            'show_modal'=>$showModal] );
+            'show_modal'=>false] );
     }
 
 
@@ -36,7 +39,7 @@ final class UserController extends AbstractController
     public function new(Request $request,EntityManagerInterface $entityManager , UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserPiloteType::class, $user);
 
         $form->handleRequest($request);
 
@@ -66,7 +69,7 @@ final class UserController extends AbstractController
     #[Route('/user/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserPiloteType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

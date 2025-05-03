@@ -12,63 +12,87 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="index.html.twig" class="nav-link">Home</a></li>
 
-                <li class="nav-item"><a  href="{{ path('app_user_index') }}" class="nav-link">Utilisateurs</a></li>
-                {% if show_modal is defined and show_modal %}
-                <div id="modal-user" class="modal" style="display: none">
-                    <div class="modal-contenu">
-                        <p>Espace réservé aux admins</p>
+                <li class="nav-item" id="lien-user"><a  href="{{ path('app_user_index') }}" class="nav-link">Profil</a></li>
+                {% if show_modal is defined and show_modal == 'userConnexion'  %}
+                    <div id="modal-profils" class="modal" style="display: none">
+                        <div class="modal-profils-contenu">
+                            <p>Veuillez vous connecter pour acceder à votre profil</p>
 
-                        <a href=" {{ path("app_index")}}" class="fermer" >Fermer</a>
+                            <a href=" {{ path("app_index")}}" class="modale-fermer" >Fermer</a>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+
+
+
+                <li class="nav-item" id="lien-vol"><a href="{{ path('app_vol_index') }}" class="nav-link">Vols</a></li>
+
+                {% if show_modal is defined and show_modal == 'volConnexion'  %}
+                    <div id="modal-vols" class="modal" style="display: none">
+                        <div class="modal-vols-contenu">
+                            <p>Veuillez vous connecter pour acceder aux vols</p>
+
+                            <a href=" {{ path("app_index")}}" class="modale-fermer" >Fermer</a>
+                        </div>
+                    </div>
+                {% elseif show_modal is defined and show_modal=='vol' %}
+                <div id="modal-vols" class="modal" style="display: none">
+                    <div class="modal-vols-contenu">
+                        <p>Espace réservé aux comptes Vols</p>
+
+                        <a href=" {{ path("app_index")}}" class="modale-fermer" >Fermer</a>
                     </div>
                 </div>
                 {% endif %}
-                <<script>
-
-                    window.addEventListener('DOMContentLoaded', function () {
-                        document.getElementById('modal-user').style.display = 'block';
-                    });
-                </script>
-                <style>
-                    #modal-user {
-                        display: none;
-                        position: fixed;
-                        z-index: 1;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        overflow: auto;
-                        background-color: rgb(0,0,0);
-                        background-color: rgba(0,0,0,0.4);
-                    }
-                    .modal-contenu {
-                        position: relative;
-                        background-color: white;
-                        margin: auto;
-                        padding: 0;
-                        border: 1px solid #888;
-                        width: 20% ;
-                        height: 10%;
-                        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-                        animation-name: animatetop;
-                        animation-duration: 0.4s
-                    }
-
-                    .fermer {
-                        display: inline-block;
-                        margin-top: 15px;
-                        background-color: #007BFF;
-                        color: #fff;
-                        border-radius: 4px;
-                        text-decoration: none;
-                    }
-                </style>
 
 
 
-                <li class="nav-item"><a href="{{ path('app_vol_index') }}" class="nav-link">Destinations</a></li>
-                <li class="nav-item"><a href="{{ path('app_reservation_new') }}" class="nav-link">Réservations</a></li>
+                <li class="nav-item"><a href="{{ path('app_reservation_index') }}" class="nav-link">Réservations</a></li>
+                {% if show_modal is defined and show_modal=='reservationConnexion' %}
+                    <div id="modal-reservations" class="modal" style="display: none">
+                        <div class="modal-reservations-contenu">
+                            <p>Veuillez vous connecter pour réserver</p>
+
+                            <a href=" {{ path("app_index")}}" class="modale-fermer" >Fermer</a>
+                        </div>
+                    </div>
+
+                {% elseif show_modal is defined and show_modal== 'reservation' %}
+                    <div id="modal-reservations" class="modal" style="display: none">
+                        <div class="modal-reservations-contenu">
+                            <p>Espace réservé aux comptes User</p>
+
+                            <a href=" {{ path("app_index")}}" class="modale-fermer" >Fermer</a>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+
                 <li class="nav-item"><a href="{{ path('app_avion_index') }}" class="nav-link">Avions</a></li>
+                {% if show_modal is defined and show_modal=='avionConnexion' %}
+                <div id="modal-avions" class="modal" style="display: none">
+                    <div class="modal-avions-contenu">
+                        <p>Veuillez vous connecter pour acceder aux avions</p>
+
+                        <a href=" {{ path("app_index")}}" class="modale-fermer" >Fermer</a>
+                    </div>
+                </div>
+
+                {% elseif show_modal is defined and show_modal=='avion' %}
+                    <div id="modal-avions" class="modal" style="display: none">
+                        <div class="modal-avions-contenu">
+                            <p>Espace réservé aux comptes Vols</p>
+
+                            <a href=" {{ path("app_index")}}" class="modale-fermer" >Fermer</a>
+                        </div>
+                    </div>
+
+                {% endif %}
+
+
                 <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link">Connexion</a></li>
                 <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link">Deconnexion</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -80,3 +104,134 @@
 
 </nav>
 
+<script>
+
+    window.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('modal-profils').style.display = 'block';
+    });
+
+    window.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('modal-user').style.display = 'block';
+    });
+    window.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('modal-vols').style.display = 'block';
+    });
+    window.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('modal-reservations').style.display = 'block';
+    });
+    window.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('modal-avions').style.display = 'block';
+    });
+</script>
+<style>
+    #modal-profils {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+    #modal-vols{
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+    #modal-reservations{
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+    #modal-avions{
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-profils-contenu {
+        position: relative;
+        background-color: white;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 20% ;
+        height: 10%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+    .modal-vols-contenu {
+        position: relative;
+        background-color: white;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 20% ;
+        height: 10%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+    .modal-reservations-contenu {
+        position: relative;
+        background-color: white;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 20% ;
+        height: 10%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+    .modal-avions-contenu {
+        position: relative;
+        background-color: white;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 20% ;
+        height: 10%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    .modale-fermer {
+        display: inline-block;
+        margin-top: 15px;
+        background-color: #007BFF;
+        color: #fff;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+
+
+
+</style>
