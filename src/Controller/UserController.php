@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserPiloteType;
+use App\Form\UserType;
+use App\Form\UserVolType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,8 +37,32 @@ final class UserController extends AbstractController
     }
 
 
-    #[Route('/user/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request,EntityManagerInterface $entityManager , UserPasswordHasherInterface $passwordHasher): Response
+    #[Route('/user/new', name: 'app_compteUser_new', methods: ['GET', 'POST'])]
+    public function newCompteUser(Request $request,EntityManagerInterface $entityManager , UserPasswordHasherInterface $passwordHasher): Response
+    {
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $mdpHash = $passwordHasher->hashPassword($user, $user->getPassword());
+            $user->setPassword($mdpHash);
+            $user -> setRoles(['ROLE_USER']);
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+
+        return $this->render('user/new.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+    #[Route('/pilote/new', name: 'app_comptePilote_new', methods: ['GET', 'POST'])]
+    public function newComptePilote(Request $request,EntityManagerInterface $entityManager , UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();
         $form = $this->createForm(UserPiloteType::class, $user);
@@ -46,12 +72,34 @@ final class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $mdpHash = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($mdpHash);
+            $user -> setRoles(['ROLE_PILOTE']);
             $entityManager->persist($user);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
         }
+        return $this->render('user/new.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+    #[Route('/vol/new', name: 'app_compteVol_new', methods: ['GET', 'POST'])]
+    public function newCompteVol(Request $request,EntityManagerInterface $entityManager , UserPasswordHasherInterface $passwordHasher): Response
+    {
+        $user = new User();
+        $form = $this->createForm(UserVolType::class, $user);
 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $mdpHash = $passwordHasher->hashPassword($user, $user->getPassword());
+            $user->setPassword($mdpHash);
+            $user -> setRoles(['ROLE_VOL']);
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
+        }
         return $this->render('user/new.html.twig', [
             'user' => $user,
             'form' => $form,
@@ -93,5 +141,10 @@ final class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/indexInscription', name: 'app_index_inscription', methods: ['GET'])]
+    public function indexInscription(): Response{
+        return $this->render('user/indexInscription.html.twig');
     }
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html.twig' %}
+</head>
+
+
+<body>
+<div>
+<hr>
+<nav>
+    <ul>
+        <li><a href="{{path('app_compteUser_new') }}" >Créer un compte User</a></li>
+        <li><a href="{{ path('app_comptePilote_new') }}" >Créer un compte Pilote</a></li>
+        <li><a href="{{ path('app_compteVol_new') }}" >Créer un compte Vol</a></li>
+    </ul>
+</nav>
+<hr>
+</div>
+<a href="{{ path('app_index') }}">Retour vers la page d'accueil</a>
+</body>
+</html>
+<style>
+ul {
+    list-style-type: none;
+    display: flex;
+}
+li{
+    margin-left: 80px;
+}
+
+</style>
