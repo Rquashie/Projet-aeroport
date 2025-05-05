@@ -1,15 +1,28 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html.twig' %}
+</head>
+<body>
 
-{% block title %}Reservation{% endblock %}
 
-{% block content
+
     <h1>Reservation</h1>
 
     <table class="table">
         <tbody>
+
             <tr>
-                <th>Id</th>
-                <td>{{ reservation.id }}</td>
+                <th>Ville de départ</th>
+                <td>{{reservation.refVol.villeDepart }}</td>
+            </tr>
+            <tr>
+                <th>Ville d'arrivee</th>
+                <td>{{reservation.refVol.villeArrive}}</td>
+            </tr>
+            <tr>
+                <th>Date de départ</th>
+                <td>{{reservation.refVol.dateDepart|date("m/d/Y", "Europe/Paris") }}</td>
             </tr>
             <tr>
                 <th>PrixBillet</th>
@@ -18,9 +31,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_reservation_index') }}">back to list</a>
+    <a href="{{ path('app_reservation_index') }}">Retour</a>
 
-    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">edit</a>
+    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">Modifier la réservation</a>
 
     {{ include('reservation/_delete_form.html.twig') }}
-{% endblock %}
+
+</body>
+</html>

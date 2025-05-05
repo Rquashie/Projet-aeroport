@@ -61,7 +61,7 @@ final class UserController extends AbstractController
             'form' => $form,
         ]);
     }
-    #[Route('/pilote/new', name: 'app_comptePilote_new', methods: ['GET', 'POST'])]
+    #[Route('/userPilote/new', name: 'app_comptePilote_new', methods: ['GET', 'POST'])]
     public function newComptePilote(Request $request,EntityManagerInterface $entityManager , UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();
@@ -83,7 +83,7 @@ final class UserController extends AbstractController
             'form' => $form,
         ]);
     }
-    #[Route('/vol/new', name: 'app_compteVol_new', methods: ['GET', 'POST'])]
+    #[Route('/userVol/new', name: 'app_compteVol_new', methods: ['GET', 'POST'])]
     public function newCompteVol(Request $request,EntityManagerInterface $entityManager , UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();

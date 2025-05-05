@@ -25,7 +25,7 @@ final class AvionController extends AbstractController
             ]);
         }
 
-        if (!$this->isGranted('ROLE_VOL')) {
+        else if ($this->isGranted('ROLE_USER') || $this->isGranted('ROLE_PILOTE')) {
             return $this->render('index.html.twig', [
                 'show_modal' => 'vol',
             ]);

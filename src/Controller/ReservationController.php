@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Reservation;
+use App\Entity\Vol;
 use App\Form\ReservationType;
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,22 +18,21 @@ final class ReservationController extends AbstractController
     #[Route(name: 'app_reservation_index', methods: ['GET'])]
     public function index(ReservationRepository $reservationRepository): Response
     {
-        if(!$this->isGranted('ROLE_USER')&& !$this->isGranted('ROLE_PILOTE')
-            && !$this->isGranted('ROLE_VOL') && !$this->isGranted('ROLE_ADMIN') ){
+        if (!$this->isGranted('ROLE_USER') && !$this->isGranted('ROLE_PILOTE')
+            && !$this->isGranted('ROLE_VOL')) {
             return $this->render('index.html.twig', [
                 'show_modal' => 'reservationConnexion',
             ]);
-        }
-
-        if (!$this->isGranted('ROLE_USER')) {
+        } else if ($this->isGranted('ROLE_PILOTE') || $this->isGranted('ROLE_VOL')) {
             return $this->render('index.html.twig', [
                 'show_modal' => 'reservation',
             ]);
         }
+        $reservations = $reservationRepository->findBy(['refUtilisateur' => $this->getUser()]);
 
         return $this->render('reservation/index.html.twig', [
-            'reservations' => $reservationRepository->findAll(),
-             'show_modal'=>false
+            'reservations' => $reservations,
+            'show_modal' => false
         ]);
     }
 
@@ -56,11 +56,13 @@ final class ReservationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_reservation_show', methods: ['GET'])]
-    public function show(Reservation $reservation): Response
+    #[Route('reservation/{id}', name: 'app_reservation_show', methods: ['GET'])]
+    public function show(Reservation $reservation, Vol $vol, ReservationRepository $reservationRepository): Response
     {
+
         return $this->render('reservation/show.html.twig', [
             'reservation' => $reservation,
+            'vol' => $vol
         ]);
     }
 
@@ -82,15 +84,31 @@ final class ReservationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_reservation_delete', methods: ['POST'])]
-    public function delete(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
+    /**
+     * @throws \DateMalformedStringException
+     */
+    #[Route('/{id}/delete', name: 'app_reservation_delete', methods: ['POST'])]
+    public function delete(Request $request, Reservation $reservation, EntityManagerInterface $entityManager, ReservationRepository $reservationRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$reservation->getId(), $request->getPayload()->getString('_token'))) {
+        $echeance = $reservationRepository->calculDateEcheance($reservation->getRefVol()->getDateDepart());
+        if ($this->isCsrfTokenValid('delete' . $reservation->getId(), $request->getPayload()->getString('_token'))
+            && $echeance >= 2) {
+
             $entityManager->remove($reservation);
             $entityManager->flush();
+
+            return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
+        }
+        else if ($echeance < 2) {
+            return $this->render('reservation/index.html.twig', [
+                'show_modal' => 'annulerReservation',
+                'reservations' => $reservationRepository->findBy(['refUtilisateur' => $this->getUser()]),]);
         }
 
-        return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
-    }
+        return $this->render('reservation/index.html.twig', [
+            'show_modal' => false ,
+            'reservations' => $reservationRepository->findBy(['refUtilisateur' => $this->getUser()]),
+        ]);
 
+    }
 }

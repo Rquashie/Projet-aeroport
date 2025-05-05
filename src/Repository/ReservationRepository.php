@@ -18,8 +18,8 @@ class ReservationRepository extends ServiceEntityRepository
 
     //    /**
     //     * @return Reservation[] Returns an array of Reservation objects
-    //     */
-    //    public function findByExampleField($value): array
+    //
+    //    public function findVilleDepartById($id): array
     //    {
     //        return $this->createQueryBuilder('r')
     //            ->andWhere('r.exampleField = :val')
@@ -40,4 +40,13 @@ class ReservationRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    /**
+     * @throws \DateMalformedStringException
+     */
+    public function calculDateEcheance($date){
+        $now = new \DateTime();
+        $intervale = $date->diff($now);
+        return $intervale->days ;
+
+    }
 }
