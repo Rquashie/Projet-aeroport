@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html.twig' %}
+</head>
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Ville de départ</th>
+        <th>Ville d'arrivée</th>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Prix initial</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for vol in vols %}
+        <tr>
+            <td>{{ vol.villeDepart }}</td>
+            <td>{{ vol.villeArrive }}</td>
+            <td>{{ vol.dateDepart|date('d/m/Y') }}</td>
+            <td>{{ vol.heureDepart|date('H:i') }}</td>
+            <td>{{ vol.prixBilletInitiale}} euros</td>
+            <td>
+                <a href="{{ path('app_reservation_new', {'idVol': vol.id})}}" class='btn btn-primary'>Réserver</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{{ path('app_index') }}">Retour</a>
+</body>
+</html>

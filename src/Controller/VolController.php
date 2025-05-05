@@ -98,29 +98,5 @@ final class VolController extends AbstractController
         return new Response();
     }
 
-    private function exporterTicketPDF(Vol $vol)
-    {
-        $pdf = new \FPDF();
-        $pdf->AddPage();
-        $pdf->SetFont('Arial', 'B', 16);
-
-        $pdf->Cell(0, 10, 'Ticket de Reservation', 0, 1, 'C');
-        $pdf->Ln(10);
-
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->Cell(50, 10, 'Depart : ' . $vol->getVilleDepart());
-        $pdf->Ln(8);
-        $pdf->Cell(50, 10, 'Destination : ' . $vol->getVilleArrive());
-        $pdf->Ln(8);
-        $pdf->Cell(50, 10, 'Date : ' . $vol->getDateDepart()->format('Y-m-d'));
-        $pdf->Ln(8);
-        $pdf->Cell(50, 10, 'Prix : ' . $vol->getPrixBilletInitiale() . ' €');
-        $pdf->Ln(8);
-        $pdf->Cell(50, 10, 'Numero Reservation : ' . $vol->getId());
-
-        $pdf->Output('D', 'ticket_reservation_' . $vol->getVilleArrive() .$vol->getVilleDepart(). '.pdf');
-
-        exit;
-    }
 
 }

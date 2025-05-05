@@ -37,6 +37,5 @@
     <a href="{{ path('app_vol_index') }}">back to list</a>
 
     <a href="{{ path('app_vol_edit', {'id': vol.id}) }}">edit</a>
-    <a href="{{ path('app_vol_generer_pdf', {'id': vol.id}) }}">Generer PDF</a>
     {{ include('vol/_delete_form.html.twig') }}
 {% endblock %}

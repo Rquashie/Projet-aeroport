@@ -1,4 +1,27 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Ville de départ</th>
+        <th>Ville d'arrivée</th>
+        <th>Date de départ</th>
+        <th>Heure de départ</th>
+        <th>Réserver</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for reservation, form in reservations|zip(forms) %}
+        <tr>
+            <td>{{ reservation.refVol.villeDepart }}</td>
+            <td>{{ reservation.refVol.villeArrive }}</td>
+            <td>{{ reservation.refVol.dateDepart|date('d/m/Y') }}</td>
+            <td>{{ reservation.refVol.heureDepart|date('H:i') }}</td>
+            <td>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-primary">Réserver</button>
+                {{ form_end(form) }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

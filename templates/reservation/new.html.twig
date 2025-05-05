@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        {% include 'head.html.twig' %}
+    {% include 'head.html.twig' %}
 </head>
 <body>
-        <h1>Create new Reservation</h1>
+<h2>Réservation du vol {{ vol.villeDepart }} → {{ vol.villeArrive }}</h2>
 
-        {{ include('reservation/_form.html.twig') }}
+<p>Date : {{ vol.dateDepart|date('d/m/Y') }}</p>
+<p>Heure : {{ vol.heureDepart|date('H:i') }}</p>
+<p>Prix estimé: {{ reservation.prixBillet}} euros</p>
 
-        <a href="{{ path('app_reservation_index') }}">back to list</a>
-
-
-<!-- loader -->
-
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+<button class="btn btn-success">Confirmer la réservation</button>
+{{ form_end(form) }}
 </body>
 </html>
-

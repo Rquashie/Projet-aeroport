@@ -14,18 +14,7 @@ class ReservationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder
-            ->add('prixBillet')
-            ->add('refUtilisateur', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
-            ->add('refVol', EntityType::class, [
-                'class' => Vol::class,
-                'choice_label' => 'id',
-            ])
 
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Reservation;
+use App\Entity\Vol;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -48,5 +49,27 @@ class ReservationRepository extends ServiceEntityRepository
         $intervale = $date->diff($now);
         return $intervale->days ;
 
+    }
+
+    /**
+     * @throws \DateMalformedStringException
+     */
+    public function augmentePrixBillet(Reservation $reservation , Vol $vol): void
+    {
+        $date = $reservation -> getRefVol() ->getDateDepart() ;
+        $prix = $vol->getPrixBilletInitiale();
+        $joursRestants = $this->calculDateEcheance($date);
+       if($joursRestants <= 2){
+           $reservation ->setPrixBillet($prix + 300);
+       }
+       else if($joursRestants <= 10){
+           $reservation ->setPrixBillet($prix + 150);
+       }
+       else if ($joursRestants <=20){
+           $reservation ->setPrixBillet($prix + 75);
+       }
+       else {
+           $reservation ->setPrixBillet($prix + 20);
+       }
     }
 }

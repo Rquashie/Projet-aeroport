@@ -6,6 +6,7 @@ use App\Entity\Reservation;
 use App\Entity\Vol;
 use App\Form\ReservationType;
 use App\Repository\ReservationRepository;
+use App\Repository\VolRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,10 +37,27 @@ final class ReservationController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_reservation_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
+    /**
+     * @throws \DateMalformedStringException
+     */
+    #[Route('/reservation/new/{idVol}', name: 'app_reservation_new')]
+    public function new(
+        int $idVol,
+        Request $request,
+        EntityManagerInterface $entityManager,
+        VolRepository $volRepository,
+        ReservationRepository $reservationRepository
+    ): Response {
+        $vol = $volRepository->find($idVol);
+        if (!$vol) {
+            throw $this->createNotFoundException("Vol non trouvé.");
+        }
+
         $reservation = new Reservation();
+        $reservation->setRefVol($vol);
+        $reservation->setRefUtilisateur($this->getUser());
+        $reservationRepository->augmentePrixBillet($reservation,$vol);
+
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
@@ -47,12 +65,22 @@ final class ReservationController extends AbstractController
             $entityManager->persist($reservation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_reservation_index');
         }
 
         return $this->render('reservation/new.html.twig', [
-            'reservation' => $reservation,
             'form' => $form,
+            'reservation' => $reservation,
+            'vol' => $vol,
+        ]);
+    }
+    #[Route('/reservation/select', name: 'app_reservation_select')]
+    public function select(VolRepository $volRepository): Response
+    {
+        $vols = $volRepository->findAll();
+
+        return $this->render('reservation/select.html.twig', [
+            'vols' => $vols,
         ]);
     }
 
@@ -111,4 +139,29 @@ final class ReservationController extends AbstractController
         ]);
 
     }
+    #[Route('/reservation/{id}/pdf', name: 'app_reservation_generer_pdf')]
+    public function exporterTicketPDF(Reservation $reservation)
+    {
+        $pdf = new \FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+
+        $pdf->Cell(0, 10, 'Ticket de Reservation', 0, 1, 'C');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Cell(50, 10, 'Depart : ' . $reservation->getRefVol()->getDateDepart()->format('d-m-Y'), 0, 1, 'L');
+        $pdf->Ln(8);
+        $pdf->Cell(50, 10, 'Destination : ' .$reservation->getRefVol()->getVilleArrive());
+        $pdf->Ln(8);
+        $pdf->Ln(8);
+        $pdf->Cell(50, 10, 'Prix : ' . $reservation->getPrixBillet() . ' euros');
+        $pdf->Ln(8);
+        $pdf->Cell(50, 10, 'Numero Reservation : ' . $reservation->getId());
+
+        $pdf->Output('D', 'ticket_reservation_' . $reservation->getRefVol()->getVilleArrive() .$reservation->getRefVol()->getVilleDepart(). '.pdf');
+
+        exit;
+    }
+
 }
