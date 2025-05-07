@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html.twig' %}
+</head>
+<body>
+<h2>Création d'un compte Vol </h2>
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-success">Confirmer l'inscription</button>
+    <button onclick="window.location.href = '{{ path("app_index_inscription") }}';">Retour à l'accueil inscription</button>
+    {{ form_end(form) }}
+{% endblock %}
+</body>
+</html>

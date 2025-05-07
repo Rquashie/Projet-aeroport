@@ -57,9 +57,8 @@ final class UserController extends AbstractController
         }
 
 
-        return $this->render('user/index.html.twig', [
-            'user' => $user,
-            'form' => $form,
+        return $this->render('user/newUser.html.twig', [
+           'form' => $form->createView(),
         ]);
     }
     #[Route('/userPilote/new', name: 'app_comptePilote_new', methods: ['GET', 'POST'])]
@@ -79,9 +78,8 @@ final class UserController extends AbstractController
 
             return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
         }
-        return $this->render('user/index.html.twig', [
-            'user' => $user,
-            'form' => $form,
+        return $this->render('user/newPilote.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
     #[Route('/userVol/new', name: 'app_compteVol_new', methods: ['GET', 'POST'])]
@@ -101,9 +99,8 @@ final class UserController extends AbstractController
 
             return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
         }
-        return $this->render('user/index.html.twig', [
-            'user' => $user,
-            'form' => $form,
+        return $this->render('user/newVol.html.twig', [
+          'form' => $form->createView(),
         ]);
     }
 
@@ -118,6 +115,7 @@ final class UserController extends AbstractController
     #[Route('/compteUser/{id}/edit', name: 'app_compteUser_edit', methods: ['GET','POST'])]
     public function editUser(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
+        $user = new User() ;
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
