@@ -63,7 +63,7 @@ final class ModeleController extends AbstractController
             return $this->redirectToRoute('app_modele_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('modele/edit.html.twig', [
+        return $this->render('modele/editPilote.html.twig', [
             'modele' => $modele,
             'form' => $form,
         ]);

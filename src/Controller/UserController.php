@@ -37,6 +37,7 @@ final class UserController extends AbstractController
     }
 
 
+
     #[Route('/user/new', name: 'app_compteUser_new', methods: ['GET', 'POST'])]
     public function newCompteUser(Request $request,EntityManagerInterface $entityManager , UserPasswordHasherInterface $passwordHasher): Response
     {
@@ -56,7 +57,7 @@ final class UserController extends AbstractController
         }
 
 
-        return $this->render('user/new.html.twig', [
+        return $this->render('user/index.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -78,7 +79,7 @@ final class UserController extends AbstractController
 
             return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
         }
-        return $this->render('user/new.html.twig', [
+        return $this->render('user/index.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -100,7 +101,7 @@ final class UserController extends AbstractController
 
             return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
         }
-        return $this->render('user/new.html.twig', [
+        return $this->render('user/index.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -114,8 +115,25 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    #[Route('/compteUser/{id}/edit', name: 'app_compteUser_edit', methods: ['GET','POST'])]
+    public function editUser(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('user/editPilote.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+    #[Route('/comptePilote/{id}/edit', name: 'app_comptePilote_edit', methods: ['GET', 'POST'])]
+    public function editPilote(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(UserPiloteType::class, $user);
         $form->handleRequest($request);
@@ -126,7 +144,24 @@ final class UserController extends AbstractController
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('user/editPilote.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+    #[Route('/compteVol/{id}/edit', name: 'app_compteVol_edit', methods: ['GET', 'POST'])]
+    public function editVol(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(UserVolType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('user/editVol.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);

@@ -1,50 +1,73 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html.twig' %}
+</head>
 
-{% block title %}User{% endblock %}
 
-{% block content %}
-    <h1>User</h1>
+<body>
+    <h1>Profil de {{ app.user.prenom }} {{ app.user.nom }}</h1>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
+
+
             <tr>
                 <th>Nom</th>
-                <td>{{ user.nom }}</td>
+                <td>{{ app.user.nom }}</td>
             </tr>
             <tr>
                 <th>Prenom</th>
-                <td>{{ user.prenom }}</td>
+                <td>{{ app.user.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ app.user.email }}</td>
             </tr>
             <tr>
                 <th>Ville</th>
-                <td>{{ user.ville }}</td>
+                <td>{{ app.user.ville }}</td>
             </tr>
             <tr>
-                <th>DateNaissance</th>
-                <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d') : '' }}</td>
+                <th>Date de naissance</th>
+                <td>{{ app.user.dateNaissance |date('Y-m-d') }}</td>
             </tr>
             <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                {% if is_granted("ROLE_USER") and not is_granted("ROLE_VOL") and not is_granted("ROLE_PILOTE")%}
+                    <th>Role</th>
+                    <td>USER</td>
+                {% elseif is_granted("ROLE_PILOTE") and is_granted("ROLE_USER") %}
+                    <th>Role</th>
+                    <td>PILOTE</td>
+                {% elseif is_granted("ROLE_VOL") and is_granted("ROLE_USER") %}
+                    <th>Role</th>
+                    <td>VOL</td>
+                {% endif %}
+
             </tr>
+
             <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
+                <th>Mot de passe</th>
+                <td>{{ app.user.password }}</td>
             </tr>
+        <tr>
+            <td> <a href="{{ path('app_index') }}">Retour vers la page d'accueil</a></td>
+
+             {% if is_granted("ROLE_USER") and not is_granted("ROLE_PILOTE") and not is_granted("ROLE_VOL") %}
+               <td>    <a href="{{ path('app_compteUser_edit', {'id': user.id}) }}">Modifier votre profil</a></td>
+            {% endif%}
+            {% if is_granted("ROLE_PILOTE") and is_granted("ROLE_USER")  %}
+              <td>    <a href="{{ path('app_comptePilote_edit', {'id': user.id}) }}">Modifier votre profil</a></td>
+            {% endif %}
+            {% if is_granted("ROLE_VOL") and is_granted("ROLE_USER") %}
+            <td>    <a href="{{ path('app_compteVol_edit', {'id': user.id}) }}">Modifier votre profil</a></td>
+            {% endif %}
+        </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
-
-    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-
     {{ include('user/_delete_form.html.twig') }}
-{% endblock %}
+
+
+</body>
+</html>

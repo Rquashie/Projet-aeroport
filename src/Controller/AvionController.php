@@ -77,7 +77,7 @@ final class AvionController extends AbstractController
             return $this->redirectToRoute('app_avion_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('avion/edit.html.twig', [
+        return $this->render('avion/editPilote.html.twig', [
             'avion' => $avion,
             'form' => $form,
         ]);
