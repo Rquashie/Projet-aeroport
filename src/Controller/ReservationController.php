@@ -20,7 +20,7 @@ final class ReservationController extends AbstractController
     public function index(ReservationRepository $reservationRepository): Response
     {
         if (!$this->isGranted('ROLE_USER') && !$this->isGranted('ROLE_PILOTE')
-            && !$this->isGranted('ROLE_VOL')) {
+            && !$this->isGranted('ROLE_VOL') && !$this->isGranted('ROLE_ADMIN')) {
             return $this->render('index.html.twig', [
                 'show_modal' => 'reservationConnexion',
             ]);
@@ -162,6 +162,12 @@ final class ReservationController extends AbstractController
         $pdf->Output('D', 'ticket_reservation_' . $reservation->getRefVol()->getVilleArrive() .$reservation->getRefVol()->getVilleDepart(). '.pdf');
 
         exit;
+    }
+    #[Route('/reservation/{id}/pdf', name: 'app_reservation_generer_pdf')]
+    public function genererPdf(Reservation $reservation): Response
+    {
+        $this->exporterTicketPDF($reservation);
+        return new Response();
     }
 
 }

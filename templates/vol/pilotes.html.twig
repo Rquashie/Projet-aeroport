@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html.twig' %}
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.0/css/dataTables.dataTables.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/2.3.0/js/dataTables.min.js"></script>
+</head>
+
+<body>
+<h2> Pilotes du vol {{ vol.villeDepart }} -> {{ vol.villeArrive  }}</h2>
+<table id="table-pilotes">
+    <thead>
+
+    <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Ville</th>
+        <th>Date de naissance</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for vol in vols %}
+        <tr>
+            <td>{{ pilote.nom }}</td>
+            <td>{{ pilote.prenom }}</td>
+            <td>{{ pilote.ville }}</td>
+            <td>{{ pilote.dateNaissance|date('Y-m-d') }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+<button onclick="window.location.href= '{{ path('app_vol_index') }}'" >Retour</button>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        $('#table-pilotes').DataTable()({
+            searching: true
+        })}
+    )
+</script>

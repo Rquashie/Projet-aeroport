@@ -60,16 +60,16 @@ class ReservationRepository extends ServiceEntityRepository
         $prix = $vol->getPrixBilletInitiale();
         $joursRestants = $this->calculDateEcheance($date);
        if($joursRestants <= 2){
-           $reservation ->setPrixBillet($prix + 300);
+           $reservation ->setPrixBillet($prix + 500);
        }
        else if($joursRestants <= 10){
-           $reservation ->setPrixBillet($prix + 150);
+           $reservation ->setPrixBillet($prix + 250);
        }
        else if ($joursRestants <=20){
-           $reservation ->setPrixBillet($prix + 75);
+           $reservation ->setPrixBillet($prix + 150);
        }
        else {
-           $reservation ->setPrixBillet($prix + 20);
+           $reservation ->setPrixBillet($prix + 50);
        }
     }
 }

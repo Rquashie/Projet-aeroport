@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Avion;
 use App\Entity\User;
 use App\Entity\Vol;
+use App\Repository\UserRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,6 +28,12 @@ class VolType extends AbstractType
             ->add('refPilote', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
+                'query_builder' => function (UserRepository $er) {
+                return $er->createQueryBuilder('u')
+                    ->where('u.roles LIKE :role')
+                    ->setParameter('role', '%"ROLE_PILOTE"%');
+                },
+
             ])
             ->add('refAvion', EntityType::class, [
                 'class' => Avion::class,

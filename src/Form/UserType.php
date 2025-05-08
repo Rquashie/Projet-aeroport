@@ -42,6 +42,15 @@ class UserType extends AbstractType
 
             ->add('password', PasswordType::class, [
                 'label' => 'Mot de Passe'
+            ])
+
+            ->add('roles', ChoiceType::class, [
+                'choices'  => [
+                    'Administrateur' => 'ROLE_ADMIN',
+                    'Utilisateur' => 'ROLE_USER',
+                ],
+                'multiple' => true,
+                'expanded' => true,
             ]);
 
     }

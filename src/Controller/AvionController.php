@@ -19,7 +19,7 @@ final class AvionController extends AbstractController
     public function index(AvionRepository $avionRepository): Response
     {
         if(!$this->isGranted('ROLE_USER')&& !$this->isGranted('ROLE_PILOTE')
-            && !$this->isGranted('ROLE_VOL') && !$this->isGranted('ROLE_ADMIN') ){
+            && !$this->isGranted('ROLE_VOL') ){
             return $this->render('index.html.twig', [
                 'show_modal' => 'avionConnexion',
             ]);

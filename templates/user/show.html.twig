@@ -33,15 +33,18 @@
                 <td>{{ app.user.dateNaissance |date('Y-m-d') }}</td>
             </tr>
             <tr>
-                {% if is_granted("ROLE_USER") and not is_granted("ROLE_VOL") and not is_granted("ROLE_PILOTE")%}
+                {% if is_granted("ROLE_USER") and is_granted("ROLE_ADMIN")%}
                     <th>Role</th>
-                    <td>USER</td>
-                {% elseif is_granted("ROLE_PILOTE") and is_granted("ROLE_USER") %}
+                    <td>ADMIN</td>
+                {% elseif is_granted("ROLE_USER") and is_granted("ROLE_PILOTE") %}
                     <th>Role</th>
                     <td>PILOTE</td>
                 {% elseif is_granted("ROLE_VOL") and is_granted("ROLE_USER") %}
                     <th>Role</th>
                     <td>VOL</td>
+                {% else %}
+                    <th>Role</th>
+                    <td>Voyageur</td>
                 {% endif %}
 
             </tr>

@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Vol;
 use App\Form\VolType;
+use App\Repository\ReservationRepository;
+use App\Repository\UserRepository;
 use App\Repository\VolRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +19,7 @@ use FPDF;
 final class VolController extends AbstractController
 {
     #[Route('/vol',name: 'app_vol_index', methods: ['GET'])]
-    public function index(VolRepository $volRepository): Response
+    public function index(VolRepository $volRepository , UserRepository $userRepository): Response
     {
         if(!$this->isGranted('ROLE_USER')&& !$this->isGranted('ROLE_PILOTE')
             && !$this->isGranted('ROLE_VOL') && !$this->isGranted('ROLE_ADMIN') ){
@@ -25,7 +28,7 @@ final class VolController extends AbstractController
             ]);
         }
 
-        if (!$this->isGranted('ROLE_VOL')) {
+        if ($this->isGranted('PILOTE') || ($this->isGranted('USER') && !$this->isGranted('ROLE_ADMIN'))) {
             return $this->render('index.html.twig', [
                 'show_modal' => 'vol',
             ]);
@@ -35,7 +38,7 @@ final class VolController extends AbstractController
             'show_modal' => false ]);
     }
 
-    #[Route('vol/new', name: 'app_vol_new', methods: ['GET', 'POST'])]
+    #[Route('/vol/new', name: 'app_vol_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $vol = new Vol();
@@ -63,7 +66,7 @@ final class VolController extends AbstractController
         ]);
     }
 
-    #[Route('vol/{id}/edit', name: 'app_vol_edit', methods: ['GET', 'POST'])]
+    #[Route('/vol/{id}/edit', name: 'app_vol_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Vol $vol, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(VolType::class, $vol);
@@ -75,13 +78,13 @@ final class VolController extends AbstractController
             return $this->redirectToRoute('app_vol_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('vol/editPilote.html.twig', [
+        return $this->render('vol/edit.html.twig', [
             'vol' => $vol,
             'form' => $form,
         ]);
     }
 
-    #[Route('vol/{id}', name: 'app_vol_delete', methods: ['POST'])]
+    #[Route('/vol/{id}', name: 'app_vol_delete', methods: ['POST'])]
     public function delete(Request $request, Vol $vol, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$vol->getId(), $request->getPayload()->getString('_token'))) {
@@ -91,11 +94,28 @@ final class VolController extends AbstractController
 
         return $this->redirectToRoute('app_vol_index', [], Response::HTTP_SEE_OTHER);
     }
-    #[Route('/vol/{id}/pdf', name: 'app_vol_generer_pdf')]
-    public function genererPdf(Vol $vol): Response
+    #[Route('/vol/passagers/{id}', name: 'app_vol_show_passagers', methods: ['GET'])]
+    public function showPassagersVol(Vol $vol ,  VolRepository $volRepository ,
+    ReservationRepository $reservationRepository): Response
     {
-        $this->exporterTicketPDF($vol);
-        return new Response();
+
+        return $this->render('vol/passagers.html.twig', [
+            'vol' => $vol,
+            'vols'=>$volRepository->findAll() ,
+            'reservations' => $reservationRepository->findBy(['refVol'=>$vol]),
+        ]);
+    }
+    #[Route('/vol/pilotes/{id}', name: 'app_vol_show_pilotes', methods: ['GET'])]
+    public function showPilotesVol(Vol $vol ,  VolRepository $volRepository ,
+                                     ReservationRepository $reservationRepository ): Response
+    {
+        $vols = $volRepository->findAll() ;
+        $pilote =$vol ->getRefPilote() ;
+
+        return $this->render('vol/pilotes.html.twig', [
+            'vol' => $vol,
+            'vols'=> $vols ,
+             'pilote'=>$pilote,] );
     }
 
 

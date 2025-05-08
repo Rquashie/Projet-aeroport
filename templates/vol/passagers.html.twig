@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html.twig' %}
+    <link href="//cdn.datatables.net/2.3.0/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet"  href="//cdn.datatables.net/2.3.0/js/dataTables.min.js"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.0/js/dataTables.min.js"></script>
+</head>
+<body>
+<h2> Passagers du vol {{ vol.villeDepart }} -> {{ vol.villeArrive  }}</h2>
+<table id="table-passagers">
+    <thead>
+
+    <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Ville</th>
+        <th>Date de naissance</th>
+
+    </tr>
+    </thead>
+    {% for reservation in reservations %}
+    <tr>
+        <td>{{reservation.refUtilisateur.nom}}</td>
+        <td>{{reservation.refUtilisateur.prenom}}</td>
+        <td>{{reservation.refUtilisateur.ville}}</td>
+        <td>{{reservation.refUtilisateur.dateNaissance|date('Y-m-d')}}</td>
+
+    </tr>
+
+    {% endfor %}
+</table>
+<button onclick="window.location.href= '{{ path('app_vol_index') }}'" >Retour</button>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        $('#table-passagers').DataTable({
+            searching: true
+        });
+    });
+</script>
