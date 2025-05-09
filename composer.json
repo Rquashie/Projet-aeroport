@@ -44,7 +44,9 @@
         "symfony/web-link": "7.2.*",
         "symfony/yaml": "7.2.*",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+      "ext-cassandra": "*",
+      "ext-http": "*"
     },
     "config": {
         "allow-plugins": {

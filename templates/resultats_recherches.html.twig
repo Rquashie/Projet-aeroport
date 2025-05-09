@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> {% include 'head.html.twig' %}</head>
+<body>
+
+{% for vol in vols  %}
+    <div class="destinations-container">
+
+            <div class="destination">
+                <p><strong>{{ vol.villeDepart }}</strong> → <strong>{{ vol.villeArrive }}</strong></p>
+                <p>Date : {{ vol.dateDepart|date('Y-m-d') }}</p>
+            </div>
+        {% else %}
+            <p>Aucun vol trouvé.</p>
+        {% endfor %}
+    </div>
+       <div id="retour" >
+        <button onclick="window.location.href='{{ path('app_index') }}'">Retour</button>
+       </div>
+
+</body>
+</html>
+<style>
+    .destinations-container {
+        display: flex;
+        padding: 20px;
+        justify-content: center;
+    }
+
+    .destination {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        width: 250px;
+        text-align: center;
+    }
+    #retour {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        text-align: center;
+    }
+
+
+</style>

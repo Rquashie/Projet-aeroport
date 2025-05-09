@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Vol;
+use Cassandra\Date;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use PhpParser\Node\Scalar\Float_;
 
 /**
  * @extends ServiceEntityRepository<Vol>
@@ -41,4 +43,30 @@ class VolRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    public function searchByDestination(?string $destination,?string $date ,?float $prix): array
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        if ($destination) {
+            $qb->andWhere('v.villeArrive LIKE :destination')
+                ->setParameter('destination', '%'.$destination.'%');
+        }
+
+        if ($date) {
+            try {
+                $dateObj = new \DateTime($date);
+                $qb->andWhere('v.dateDepart = :date')
+                    ->setParameter('date', $dateObj->format('Y-m-d'));
+            } catch (\Exception $e) {
+                // gestion si la date est invalide
+            }
+        }
+
+        if ($prix !== null) {
+            $qb->andWhere('v.prixBilletInitiale <= :prix')
+                ->setParameter('prix', $prix);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }
