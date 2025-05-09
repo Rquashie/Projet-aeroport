@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use function Sodium\add;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class UserVolType extends AbstractType
 {
@@ -41,7 +42,29 @@ class UserVolType extends AbstractType
             ])
 
             ->add('password', PasswordType::class, [
-                'label' => 'Mot de Passe'
+                'label' => 'Mot de Passe',
+                'constraints' => [
+                    new Assert\Length([
+                        'min' => 8,
+                        'minMessage' => 'Le mot de passe doit comporter au moins {{ limit }} caractères.',
+                    ]),
+                    new Assert\Regex([
+                        'pattern' => '/[A-Z]/',
+                        'message' => 'Le mot de passe doit contenir au moins une lettre majuscule.',
+                    ]),
+                    new Assert\Regex([
+                        'pattern' => '/[a-z]/',
+                        'message' => 'Le mot de passe doit contenir au moins une lettre minuscule.',
+                    ]),
+                    new Assert\Regex([
+                        'pattern' => '/\d/',
+                        'message' => 'Le mot de passe doit contenir au moins un chiffre.',
+                    ]),
+                    new Assert\Regex([
+                        'pattern' => '/[\W_]/',
+                        'message' => 'Le mot de passe doit contenir au moins un caractère spécial.',
+                    ]),
+                ],
             ]);
     }
 
